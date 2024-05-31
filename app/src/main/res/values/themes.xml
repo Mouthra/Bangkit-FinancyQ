@@ -1,0 +1,22 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.FinancyQ" parent="Theme.Material3.Light.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:statusBarColor">@color/white</item>
+        <!-- Set the color of status bar icons to dark -->
+        <item name="android:windowLightStatusBar">true</item>
+        <!-- Set the color of navigation bar icons to dark -->
+
+    </style>
+
+    <style name="Theme.FinancyQ" parent="Base.Theme.FinancyQ" />
+
+    <style name="CustomBottomNavigationView" parent="Widget.Material3.BottomNavigationView">
+        <item name="itemShapeAppearanceOverlay">@null</item>
+        <item name="itemShapeAppearance">@null</item>
+        <item name="itemRippleColor">@android:color/transparent</item>
+        <item name="itemBackground">@android:color/transparent</item>
+
+    </style>
+</resources>
