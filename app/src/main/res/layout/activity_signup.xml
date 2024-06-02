@@ -5,12 +5,23 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_signup"
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
     tools:context=".SignupActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="110dp"
+            android:layout_height="120dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:clipToOutline="true"
+            android:outlineProvider="background"
+            android:scaleType="fitXY"
+            android:src="@drawable/gp2"/>
 
         <ImageView
             android:id="@+id/imageView"

@@ -13,8 +13,11 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string name="title_activity_main22">MainActivity22</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_profile">Profile</string>
+    <string name="message_welcome_page"> Empower yourself with our intuitive tools and educational resources designed to enhance your financial literacy. Transform your financial habits for a brighter future. Start your journey with FinancyQ today! </string>
+    <string name="title_analizeq">AnalizeQ</string>
+    <string name="title_edufinance">EduFinance</string>
+    <string name="team">Amoeba Present</string>
 </resources>

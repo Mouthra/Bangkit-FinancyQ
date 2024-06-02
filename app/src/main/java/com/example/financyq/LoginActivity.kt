@@ -2,6 +2,7 @@ package com.example.financyq
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.financyq.databinding.ActivityLoginBinding
 
@@ -14,7 +15,6 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
-
         setupAction()
 
     }

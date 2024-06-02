@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@color/white"
     tools:context=".LoginActivity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -171,6 +171,19 @@
             app:layout_constraintGuide_percent="0.05"
             app:layout_constraintStart_toStartOf="parent" />
 
+                <ImageView
+                    android:layout_width="110dp"
+                    android:layout_height="120dp"
+                    android:clipToOutline="true"
+                    android:outlineProvider="background"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/loginButton"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@drawable/bg" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </ScrollView>

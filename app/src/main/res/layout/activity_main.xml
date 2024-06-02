@@ -18,10 +18,7 @@
         app:itemIconTint="@color/bottom_nav_color_selector"
         app:itemTextColor="@color/bottom_nav_color_selector"
         app:menu="@menu/bottom_nav_menu"
-        app:labelVisibilityMode="labeled"
-        app:itemBackground="@color/orange3"
-        app:itemRippleColor="@color/orange3"
-        style="@style/CustomBottomNavigationView"/>
+        app:labelVisibilityMode="labeled" />
 
     <fragment
         android:id="@+id/nav_host_fragment_activity_main"
