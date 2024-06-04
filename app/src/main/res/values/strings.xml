@@ -24,6 +24,11 @@
     <string name="privacy_policy">Privacy Policy</string>
     <string name="about_us">About Us</string>
     <string name="logout">Logout</string>
+    <string name="description">Description</string>
+    <string name="empty_data">data not found</string>
+    <string name="title_education">Title</string>
+    <string name="amoeba">Amoeba</string>
+    <string name="profile">Profile</string>
 
     <string-array name="welcome_texts">
         <item>Welcome to FinancyQ!</item>

@@ -1,8 +1,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.FinancyQ" parent="Theme.Material3.Light.NoActionBar">
-        <item name="android:statusBarColor">@color/white</item>
         <item name="android:windowLightStatusBar">true</item>
+        <item name="android:statusBarColor">@color/orange3</item>
         <item name="colorPrimary">@color/orange</item>
     </style>
 
@@ -13,4 +13,18 @@
 <!--        <item name="itemShapeAppearance">@null</item>-->
 <!--        <item name="itemRippleColor">@android:color/transparent</item>-->
 <!--    </style>-->
+
+    <style name="Widget.MyApp.BottomNavigationView" parent="Widget.Material3.BottomNavigationView">
+        <item name="itemIconTint">@color/black</item>
+        <item name="itemTextColor">@color/black</item>
+        <item name="backgroundTint">@color/orange3</item>
+    </style>
+
+    <style name="AppTheme.WhiteStatusBar" parent="Theme.Material3.Light.NoActionBar">
+        <item name="android:statusBarColor">@color/white</item>
+    </style>
+
+    <style name="AppTheme.OrangeStatusBar" parent="Theme.Material3.Light.NoActionBar">
+        <item name="android:statusBarColor">@color/orange3</item>
+    </style>
 </resources>
