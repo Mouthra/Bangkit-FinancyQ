@@ -23,7 +23,7 @@ class EduFinanceFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val eduFinanceViewModel =
-            ViewModelProvider(this).get(EduFinanceViewModel::class.java)
+            ViewModelProvider(this)[EduFinanceViewModel::class.java]
 
         _binding = FragmentEduFinanceBinding.inflate(inflater, container, false)
         val root: View = binding.root

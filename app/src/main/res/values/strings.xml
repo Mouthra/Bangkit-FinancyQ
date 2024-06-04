@@ -20,4 +20,14 @@
     <string name="title_analizeq">AnalizeQ</string>
     <string name="title_edufinance">EduFinance</string>
     <string name="team">Amoeba Present</string>
+    <string name="about_financyq">About FinancyQ</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="about_us">About Us</string>
+    <string name="logout">Logout</string>
+
+    <string-array name="welcome_texts">
+        <item>Welcome to FinancyQ!</item>
+        <item>Empower yourself with our intuitive tools and educational resources designed to enhance your financial literacy. Transform your financial habits for a brighter future.</item>
+        <item>Start your journey with FinancyQ today!</item>
+    </string-array>
 </resources>
