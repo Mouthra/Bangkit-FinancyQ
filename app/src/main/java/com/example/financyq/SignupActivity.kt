@@ -2,9 +2,9 @@ package com.example.financyq
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.financyq.databinding.ActivitySignupBinding
+import com.example.financyq.ui.otp.OtpActivity
 
 class SignupActivity : AppCompatActivity() {
 
@@ -14,14 +14,13 @@ class SignupActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySignupBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportActionBar?.hide()
         setupAction()
 
-        }
+    }
 
     private fun setupAction() {
         binding.signupButton.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, OtpActivity::class.java))
         }
     }
 }

@@ -1,27 +1,134 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/gradient_background"
-    tools:context=".ui.profile.ProfileFragment">
+    tools:context=".ui.profile.ProfileFragment"
+    android:paddingStart="32dp"
+    android:paddingEnd="32dp"
+    android:paddingBottom="70dp">
 
+    <!-- Text "Profile" -->
     <TextView
-        android:id="@+id/text_profile"
-        android:layout_width="match_parent"
+        android:id="@+id/tv_profile"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:text="This is Profile Fragment"
+        android:text="@string/profile"
+        android:textSize="30sp"
+        android:textColor="@color/orange"
         android:fontFamily="@font/poppins_bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- ScrollView -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_profile"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="16dp">
 
+        <!-- Your content inside ScrollView -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- CardView -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
+
+                <!-- Content inside CardView -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginEnd="16dp"
+                        android:src="@drawable/ic_baseline_person"
+                        app:tint="@color/orange" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/poppins"
+                        android:gravity="center_vertical"
+                        android:text="@string/amoeba"
+                        android:textColor="@color/orange"
+                        android:textSize="18sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Buttons -->
+            <Button
+                android:id="@+id/btn_about_financyq"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
+                android:text="@string/about_financyq"
+                android:fontFamily="@font/poppins"
+                android:background="@drawable/btn_transparent_with_border"
+                android:textColor="@color/orange"
+                app:layout_constraintTop_toBottomOf="@+id/cardView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <Button
+                android:id="@+id/btn_privacy_policy"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:text="@string/privacy_policy"
+                android:fontFamily="@font/poppins"
+                android:background="@drawable/btn_transparent_with_border"
+                android:textColor="@color/orange"
+                app:layout_constraintTop_toBottomOf="@+id/btn_about_financyq"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <Button
+                android:id="@+id/btn_about_us"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:text="@string/about_us"
+                android:fontFamily="@font/poppins"
+                android:background="@drawable/btn_transparent_with_border"
+                android:textColor="@color/orange"
+                app:layout_constraintTop_toBottomOf="@+id/btn_privacy_policy"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <Button
+                android:id="@+id/btn_logout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="70dp"
+                android:layout_marginBottom="20dp"
+                android:text="@string/logout"
+                android:fontFamily="@font/poppins_bold"
+                app:layout_constraintTop_toBottomOf="@+id/btn_about_us"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
