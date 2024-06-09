@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,130 +6,189 @@
     android:background="@drawable/gradient_background"
     tools:context=".ui.home.HomeFragment">
 
-    <TextView
-        android:id="@+id/text_home"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:fontFamily="@font/poppins_bold"
-        android:textAlignment="textStart"
-        android:textColor="@color/orange"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.049" />
-
-    <FrameLayout
-        android:id="@+id/banner"
-        android:layout_width="350dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_home"
-        android:background="@drawable/banner_rounded">
+        android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/image_banner"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/banner_rounded"
-            android:clipToOutline="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/banner" />
+            android:id="@+id/icon_home"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/icon_app"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="20dp" />
 
         <TextView
-            android:id="@+id/text_banner"
+            android:id="@+id/tv_hello"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="@string/hello"
+            android:textColor="@color/orange"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/icon_home"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <FrameLayout
+            android:id="@+id/banner"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="Saving money is saving your life"
-            android:textColor="@android:color/white"
-            android:textSize="35sp"
-            android:textStyle="bold"
-            android:fontFamily="@font/poppins_bold"/>
-    </FrameLayout>
+            android:layout_height="180dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_hello"
+            android:background="@drawable/banner_rounded">
 
-    <TextView
-        android:id="@+id/text_income_expenditure"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginLeft="32dp"
-        android:fontFamily="@font/poppins_bold"
-        android:text="Income - Expenditure"
-        android:textAlignment="textStart"
-        android:textColor="@color/orange"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/banner" />
+            <ImageView
+                android:id="@+id/image_banner"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:background="@drawable/banner_rounded"
+                android:clipToOutline="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/banner" />
 
-    <TextView
-        android:id="@+id/text_expenditure"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginLeft="32dp"
-        android:text="Pengeluaran mu: Rp 30.000"
-        android:textSize="16sp"
-        android:fontFamily="@font/poppins"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_income_expenditure" />
+            <TextView
+                android:id="@+id/text_banner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/text_banner"
+                android:textColor="@android:color/white"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/poppins_bold" />
+        </FrameLayout>
 
-    <TextView
-        android:id="@+id/text_income"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginLeft="32dp"
-        android:text="Pemasukan tabunganmu: Rp 150.000"
-        android:textSize="16sp"
-        android:fontFamily="@font/poppins"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_expenditure" />
+        <TextView
+            android:id="@+id/tv_income_expenditure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="32dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="@string/income_expenditure"
+            android:textAlignment="textStart"
+            android:textColor="@color/orange"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/banner" />
 
-    <Button
-        android:id="@+id/button_analyze"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:backgroundTint="@color/orange"
-        android:text="AnalyzeQ"
-        android:fontFamily="@font/poppins_bold"
-        android:textColor="@android:color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_income" />
+        <TextView
+            android:id="@+id/text_income"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="32dp"
+            android:text="@string/your_income"
+            android:textSize="16sp"
+            android:fontFamily="@font/poppins_bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_income_expenditure" />
 
-    <TextView
-        android:id="@+id/text_edufinance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginLeft="32dp"
-        android:fontFamily="@font/poppins_bold"
-        android:text="EduFinance"
-        android:textAlignment="textStart"
-        android:textColor="@color/orange"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button_analyze" />
+        <TextView
+            android:id="@+id/text_expenditure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="32dp"
+            android:text="@string/your_expenditure"
+            android:textSize="16sp"
+            android:fontFamily="@font/poppins_bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_income" />
 
-<!--    <androidx.recyclerview.widget.RecyclerView-->
-<!--        android:id="@+id/recycler_edufinance"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="8dp"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/text_edufinance"-->
-<!--        tools:listitem="@layout/item_edufinance" />-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/btn_details_income"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/details_income"
+            android:background="@drawable/btn_transparent_with_border"
+            android:textSize="12dp"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="@color/orange"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btn_details_expenditure"
+            app:layout_constraintTop_toBottomOf="@id/text_expenditure" />
+
+        <Button
+            android:id="@+id/btn_details_expenditure"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/btn_transparent_with_border"
+            android:text="@string/details_expenditure"
+            android:textSize="12dp"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="@color/orange"
+            app:layout_constraintStart_toEndOf="@id/btn_details_income"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_expenditure" />
+
+        <TextView
+            android:id="@+id/tv_edufinance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="32dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="@string/edufinance"
+            android:textAlignment="textStart"
+            android:textColor="@color/orange"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_details_income" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_sc_education"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_edufinance"
+            tools:itemCount="3"
+            tools:listitem="@layout/item_list_home" />
+
+        <ProgressBar
+            android:id="@+id/pb_news"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.548"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_edufinance"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ProgressBar
+            android:id="@+id/pb_news2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            app:layout_constraintBottom_toTopOf="@+id/btn_details_income"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.575"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_income_expenditure"
+            app:layout_constraintVertical_bias="0.2" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

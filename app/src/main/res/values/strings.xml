@@ -33,6 +33,36 @@
     <string name="otp_verivication">OTP Verivication</string>
     <string name="desc_otp">Enter the OTP sent to amoeba@bangkit.academy</string>
     <string name="verify_and_continue">Verify and Continue</string>
+    <string name="text_banner">Saving money is saving your life</string>
+    <string name="income_expenditure">Income - Expenditure</string>
+    <string name="analizeq">AnalizeQ</string>
+    <string name="edufinance">EduFinance</string>
+    <string name="Income">Income</string>
+    <string name="expenditure">Expenditure</string>
+    <string name="analyzeq">AnalyzeQ</string>
+    <string name="see_details">See Details...</string>
+    <string name="your_income">Your Income :</string>
+    <string name="your_expenditure">Your Expenditure :</string>
+    <string name="record">Record Finance</string>
+    <string name="using_foto">Using Foto</string>
+    <string name="manual">Manual</string>
+    <string name="value_expenditure">Rp 5,000,000</string>
+    <string name="value_income">Rp 1,000,000</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="analyze">Analyze</string>
+    <string name="in_which_category">In which category?</string>
+    <string name="what_will_you_use_this_money_for">What will you use this money for?</string>
+    <string name="name_of_income">Name of income</string>
+    <string name="price">Price</string>
+    <string name="name_of_expenditure">Name of expenditure</string>
+    <string name="total_income">Total Income</string>
+    <string name="save_income">Save Income</string>
+    <string name="save_expenditure">Save Expenditure</string>
+    <string name="details_your_income">Your Income</string>
+    <string name="details_your_expenditure">Your Expenditure</string>
+    <string name="details_expenditure">Details Expenses</string>
+    <string name="details_income">Details Income</string>
 
     <!--    hapus aja ini ais-->
     <string-array name="welcome_texts">

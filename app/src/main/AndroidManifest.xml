@@ -13,6 +13,18 @@
         android:theme="@style/Theme.FinancyQ"
         tools:targetApi="31">
         <activity
+            android:name=".ui.details.DetailsExpenditureActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.details.DetailsIncomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.manual.ManualActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.photo.PhotoActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.otp.OtpActivity"
             android:exported="false" />
         <activity
@@ -35,9 +47,7 @@
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
-            android:exported="false">
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".ui.splash.SplashActivity"
             android:exported="true">
