@@ -16,5 +16,13 @@ class AboutUsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAboutUsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        setupActions()
+    }
+
+    private fun setupActions(){
+        binding.btnBack.setOnClickListener {
+            finish()
+        }
     }
 }

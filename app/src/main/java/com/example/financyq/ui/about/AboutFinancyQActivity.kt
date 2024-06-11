@@ -1,12 +1,15 @@
 package com.example.financyq.ui.about
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.financyq.R
 import com.example.financyq.databinding.ActivityAboutFinancyQBinding
+import com.example.financyq.ui.profile.ProfileFragment
 
 class AboutFinancyQActivity : AppCompatActivity() {
 
@@ -16,5 +19,12 @@ class AboutFinancyQActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAboutFinancyQBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        setupActions()
+    }
+    private fun setupActions(){
+        binding.btnBack.setOnClickListener {
+            finish()
+        }
     }
 }

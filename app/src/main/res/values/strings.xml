@@ -33,6 +33,20 @@
     <string name="otp_verivication">OTP Verivication</string>
     <string name="desc_otp">Enter the OTP sent to amoeba@bangkit.academy</string>
     <string name="verify_and_continue">Verify and Continue</string>
+    <string name="back">Profile</string>
+    <string name="financyq">FinancyQ</string>
+    <string name="financyq_empowers_users_to_personal_finance_management_with_educational_resources">FinancyQ empowers users to personal finance management with educational resources, Through intuitive features such as expense tracking and budgeting, FinancyQ ensures users have control over their finances. Whether for daily expenses or long-term goals, FinancyQ offers a comprehensive solution to enhance financial literacy and foster responsible financial habits.</string>
+    <string name="financyq_present">FinancyQ 2024</string>
+    <string name="about_financy_q">About FinancyQ</string>
+    <string name="about_desc">Kami adalah amoeba (anak moeda berbakat) yang telah sekuat tenaga dan pikiran untuk menghadirkan FinancyQ, yaitu solusi teknologi keuangan yang inovatif dan bermanfaat bagi masyarakat.</string>
+    <string name="ML_Team">1. Alya Sahrani (Universitas Pendidikan Indonesia)\n2. Dinar Ferdiansyah (Universitas Brawijaya)\n3. Muhammad Yasir Amri (Institut Pertanian Bogor)</string>
+    <string name="CC_Team">1. Adrian Kusuma Widjaja Kardana (Universitas Pendidikan Indonesia)\n2. Farhan Nurhidayah (Universitas Muhammadiyah Prof Dr Hamka)</string>
+    <string name="MD_Team">1. M. Fiqry Septiawan (Universitas Muslim Indonesia)\n2. Aisyah Husna Alifah (Universitas Pendidikan Indonesia)</string>
+    <string name="pp1">Welcome to FinancyQ. We respect your privacy and are committed to protecting your personal data. This Privacy Policy will inform you about how we handle your personal data when you visit our website or use our services.</string>
+    <string name="information_collect">Information We Collect\nWe may collect the following personal information: name, email address, phone number, and billing information.</string>
+    <string name="use_information">How We Use Your Information\nWe use the information we collect in several ways. First, to provide and maintain our service, ensuring you have the best experience using our platform. Second, to notify you about changes to our services. Third, to allow participation in interactive features, enabling you to take full advantage of our offerings. Fourth, to provide customer support, assisting you with any issues or questions. Fifth, to gather analysis or valuable information to help us improve our services. Sixth, to monitor the usage of our service and ensure the website is functioning correctly. Lastly, to detect, prevent, and address technical issues, keeping our platform secure and operational.</string>
+    <string name="data">Data Sharing and Disclosure\nWe do not share your personal information with third parties except in the following cases. First, with your consent, when you have given us explicit permission to share your information. Second, for legal reasons, when we are required to do so by law or in response to valid requests by public authorities. Third, in the event of a business transfer such as a merger, acquisition, or sale of assets, your personal data may be transferred.</string>
+    <string name="contact">Contact Us\nIf you have any questions about this Privacy Policy, please contact us via email at FinancyQ. Thank you for using FinancyQ.</string>
 
     <!--    hapus aja ini ais-->
     <string-array name="welcome_texts">
