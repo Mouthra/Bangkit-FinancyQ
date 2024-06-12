@@ -1,11 +1,13 @@
 
-package com.example.financyq
+package com.example.financyq.ui.welcome
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.financyq.databinding.ActivityWelcomeBinding
+import com.example.financyq.ui.login.LoginActivity
+import com.example.financyq.ui.signup.SignupActivity
 
 class WelcomeActivity : AppCompatActivity() {
 

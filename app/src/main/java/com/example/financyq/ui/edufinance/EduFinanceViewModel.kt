@@ -1,13 +1,12 @@
 package com.example.financyq.ui.edufinance
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.financyq.data.di.Result
+import com.example.financyq.data.repo.EduFinanceRepository
+import com.example.financyq.data.response.EduFinanceResponse
 
-class EduFinanceViewModel : ViewModel() {
+class EduFinanceViewModel(private val eduFinanceRepository: EduFinanceRepository) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is EduFinance Fragment"
-    }
-    val text: LiveData<String> = _text
+    fun getEducationFinance(): LiveData<Result<List<EduFinanceResponse>>> = eduFinanceRepository.getEducationFinance()
 }

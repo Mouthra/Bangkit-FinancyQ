@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.financyq.WelcomeActivity
+import com.example.financyq.ui.welcome.WelcomeActivity
 import com.example.financyq.databinding.FragmentProfileBinding
 import com.example.financyq.ui.about.AboutFinancyQActivity
 import com.example.financyq.ui.about.PrivacyPolicyActivity
