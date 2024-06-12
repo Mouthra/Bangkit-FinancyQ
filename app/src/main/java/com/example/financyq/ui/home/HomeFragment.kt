@@ -1,10 +1,12 @@
 package com.example.financyq.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.HorizontalScrollView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -13,6 +15,8 @@ import com.example.financyq.data.di.Result
 import com.example.financyq.data.di.ViewModelFactory
 import com.example.financyq.databinding.FragmentHomeBinding
 import com.example.financyq.ui.adapter.ShortcutAdapter
+import com.example.financyq.ui.details.DetailsExpenditureActivity
+import com.example.financyq.ui.details.DetailsIncomeActivity
 import com.example.financyq.ui.edufinance.EduFinanceViewModel
 
 class HomeFragment : Fragment() {
@@ -20,7 +24,7 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private val eduFinanceViewModel: EduFinanceViewModel by viewModels {
-        ViewModelFactory.getInstance()
+        ViewModelFactory.getInstance(requireContext())
     }
     private lateinit var shortcutAdapter: ShortcutAdapter
 
@@ -36,14 +40,15 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
         setObserver()
+        setupAction()
     }
 
     private fun setupRecyclerView() {
         shortcutAdapter = ShortcutAdapter()
-        binding.rvScEducation.apply {
-            layoutManager = LinearLayoutManager(requireActivity())
-            adapter = shortcutAdapter
-        }
+        val layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
+        binding.rvScEducation.layoutManager = layoutManager
+        binding.rvScEducation.setHasFixedSize(true)
+        binding.rvScEducation.adapter = shortcutAdapter
     }
 
     private fun setObserver() {
@@ -61,6 +66,19 @@ class HomeFragment : Fragment() {
                 is Result.Loading -> {
                     binding.progressBar.visibility = View.VISIBLE
                 }
+            }
+        }
+    }
+
+    private fun setupAction(){
+        binding.apply {
+            btnDetailsIncome.setOnClickListener {
+                val intent = Intent(requireContext(), DetailsIncomeActivity::class.java)
+                startActivity(intent)
+            }
+            btnDetailsExpenditure.setOnClickListener {
+                val intent = Intent(requireContext(), DetailsExpenditureActivity::class.java)
+                startActivity(intent)
             }
         }
     }

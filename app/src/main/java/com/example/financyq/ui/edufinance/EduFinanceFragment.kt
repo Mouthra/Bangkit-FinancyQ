@@ -18,7 +18,7 @@ class EduFinanceFragment : Fragment() {
     private var _binding: FragmentEduFinanceBinding? = null
     private val binding get() = _binding!!
     private val eduFinanceViewModel: EduFinanceViewModel by viewModels {
-        ViewModelFactory.getInstance()
+        ViewModelFactory.getInstance(requireContext())
     }
     private lateinit var eduFinanceAdapter: EduFinanceAdapter
 

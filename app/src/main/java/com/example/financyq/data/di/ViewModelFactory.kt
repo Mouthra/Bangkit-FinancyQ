@@ -1,10 +1,13 @@
 package com.example.financyq.data.di
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.financyq.data.repo.EduFinanceRepository
 import com.example.financyq.data.repo.UserRepository
 import com.example.financyq.ui.edufinance.EduFinanceViewModel
+import com.example.financyq.ui.login.LoginViewModel
+import com.example.financyq.ui.otp.OtpActivity
 import com.example.financyq.ui.otp.OtpViewModel
 import com.example.financyq.ui.signup.SignUpViewModel
 
@@ -24,6 +27,9 @@ class ViewModelFactory(
             modelClass.isAssignableFrom(OtpViewModel::class.java) -> {
                 OtpViewModel(userRepository) as T
             }
+            modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
+                LoginViewModel(userRepository) as T
+            }
             else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
         }
     }
@@ -33,9 +39,9 @@ class ViewModelFactory(
         private var INSTANCE: ViewModelFactory? = null
 
         @JvmStatic
-        fun getInstance(): ViewModelFactory {
-            val eduFinanceRepository = Injection.provideEduFinanceRepository()
-            val userRepository = Injection.provideUserRepository()
+        fun getInstance(context: Context): ViewModelFactory {
+            val eduFinanceRepository = Injection.provideEduFinanceRepository(context)
+            val userRepository = Injection.provideUserRepository(context)
             return INSTANCE ?: synchronized(ViewModelFactory::class.java) {
                 INSTANCE ?: ViewModelFactory(eduFinanceRepository, userRepository)
                     .also { INSTANCE = it }

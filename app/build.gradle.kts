@@ -16,6 +16,7 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField("String", "BASE_URL", "\"https://financyq-app.web.app/\"")
+//        buildConfigField("String", "BASE_URL", "\"http://localhost:3000/\"")
     }
 
     buildTypes {
@@ -39,6 +40,7 @@ android {
         buildConfig = true
     }
 }
+
 
 dependencies {
 

@@ -9,7 +9,6 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.financyq.R
 import com.example.financyq.databinding.ActivityAboutFinancyQBinding
-import com.example.financyq.ui.profile.ProfileFragment
 
 class AboutFinancyQActivity : AppCompatActivity() {
 

@@ -1,6 +1,7 @@
 package com.example.financyq
 
 import android.os.Bundle
+
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -24,6 +25,11 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
         NavigationUI.setupWithNavController(navView, navController)
 
+        val loggedIn = intent.getBooleanExtra("loggedIn", false) // Menerima status login dari LoginActivity
+        if (loggedIn) {
+            navController.navigate(R.id.navigation_home) // Navigasi ke HomeFragment setelah login
+        }
+
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_home, R.id.navigation_analize_q, R.id.navigation_edu_finance, R.id.navigation_profile
@@ -33,5 +39,4 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
     }
-//
 }

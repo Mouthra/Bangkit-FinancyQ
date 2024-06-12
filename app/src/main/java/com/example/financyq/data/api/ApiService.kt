@@ -1,8 +1,10 @@
 package com.example.financyq.data.api
 
+import com.example.financyq.data.request.LoginRequest
 import com.example.financyq.data.request.OtpRequest
 import com.example.financyq.data.request.SignupRequest
 import com.example.financyq.data.response.EduFinanceResponse
+import com.example.financyq.data.response.LoginResponse
 import com.example.financyq.data.response.OtpResponse
 import com.example.financyq.data.response.SignUpResponse
 import retrofit2.Response
@@ -31,8 +33,13 @@ interface ApiService {
         @Body signupRequest : SignupRequest
     ): Response<SignUpResponse>
 
-    @POST("verifyOtp")
+    @POST("verifyotp")
     suspend fun verifyOtp(
         @Body otpRequest: OtpRequest
     ): Response<OtpResponse>
+
+    @POST("login")
+    suspend fun login(
+        @Body loginRequest: LoginRequest
+    ): Response<LoginResponse>
 }

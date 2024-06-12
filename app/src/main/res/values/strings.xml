@@ -75,7 +75,7 @@
     <string name="save_expenditure">Save Expenditure</string>
     <string name="details_your_income">Your Income</string>
     <string name="details_your_expenditure">Your Expenditure</string>
-    <string name="details_expenditure">Details Expenses</string>
+    <string name="details_expenditure">Details Expenditure</string>
     <string name="details_income">Details Income</string>
     <string name="logo_financyq">Logo_FinancyQ</string>
     <string name="logo_otp">Logo_Otp</string>
@@ -87,6 +87,16 @@
     <string name="title_set">Congratulations!</string>
     <string name="message_set">Your data has been successfully registered\n\nPlease check your email for the OTP code</string>
     <string name="continue_set">Continue</string>
+    <string name="banner">banner</string>
+    <string name="machine_learning_team">Machine Learning Team</string>
+    <string name="cloud_computing_team">Cloud Computing Team</string>
+    <string name="mobile_development_team">Mobile Development Team</string>
+    <string name="confirm_logout">Confirm Logout</string>
+    <string name="message_logout">Are you sure want to logout?\nYou will need to login again</string>
+    <string name="yes">Yes</string>
+    <string name="No">No</string>
+    <string name="set_title">Confirm</string>
+    <string name="set_message">Do you want to exit the application?</string>
 
     <!--    hapus aja ini ais-->
     <string-array name="welcome_texts">
