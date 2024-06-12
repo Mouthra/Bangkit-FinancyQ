@@ -1,20 +1,20 @@
 package com.example.financyq.ui.analizeq
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.example.financyq.databinding.FragmentAnalizeQBinding
+import com.example.financyq.ui.details.DetailsExpenditureActivity
+import com.example.financyq.ui.details.DetailsIncomeActivity
+import com.example.financyq.ui.manual.ManualActivity
+import com.example.financyq.ui.photo.PhotoActivity
 
 class AnalizeQFragment : Fragment() {
 
     private var _binding: FragmentAnalizeQBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -22,17 +22,29 @@ class AnalizeQFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val analizeqViewModel =
-            ViewModelProvider(this)[AnalizeQViewModel::class.java]
-
         _binding = FragmentAnalizeQBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        return binding.root
+    }
 
-        val textView: TextView = binding.textAnalizeQ
-        analizeqViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        setupAction()
+    }
+
+    private fun setupAction() {
+        binding.btnFoto.setOnClickListener {
+            startActivity(Intent(requireContext(), PhotoActivity::class.java))
         }
-        return root
+        binding.btnManual.setOnClickListener {
+            startActivity(Intent(requireContext(), ManualActivity::class.java))
+        }
+        binding.tvDetailsIncome.setOnClickListener{
+            startActivity(Intent(requireContext(), DetailsIncomeActivity::class.java))
+        }
+        binding.tvDetailsExpenditure.setOnClickListener{
+            startActivity(Intent(requireContext(), DetailsExpenditureActivity::class.java))
+        }
     }
 
     override fun onDestroyView() {

@@ -1,8 +1,9 @@
-package com.example.financyq
+package com.example.financyq.ui.login
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.financyq.MainActivity
 import com.example.financyq.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
