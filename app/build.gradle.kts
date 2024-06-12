@@ -15,7 +15,7 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField("String", "BASE_URL", "\"https://financyq-app-api-xhmxz47wja-et.a.run.app/\"")
+        buildConfigField("String", "BASE_URL", "\"https://financyq-app.web.app/\"")
     }
 
     buildTypes {
@@ -59,5 +59,11 @@ dependencies {
     implementation(libs.retrofit2.converter.gson)
     implementation(libs.logging.interceptor)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+
+    implementation(libs.androidx.activity.ktx)
+    implementation(libs.androidx.datastore.preferences)
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.glide)
 
 }

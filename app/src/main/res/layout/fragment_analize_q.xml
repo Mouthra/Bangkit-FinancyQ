@@ -31,7 +31,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="8dp"
-
+            android:backgroundTint="@color/orange"
             app:layout_constraintTop_toBottomOf="@+id/tv_analizeq"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/cardView2"
@@ -41,8 +41,7 @@
             <!-- Content inside CardView -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/gradient_border">
+                android:layout_height="match_parent">
 
                 <TextView
                     android:id="@+id/tv_income"
@@ -50,7 +49,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_bold"
                     android:text="@string/Income"
-                    android:textColor="@color/orange"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -63,7 +62,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_bold"
                     android:text="@string/value_income"
-                    android:textColor="@color/green"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     app:layout_constraintTop_toBottomOf="@id/tv_income"
                     app:layout_constraintStart_toStartOf="parent"
@@ -76,7 +75,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_bold"
                     android:text="@string/see_details"
-                    android:textColor="@color/orange"
+                    android:textColor="@color/white"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -92,6 +91,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="32dp"
+            android:backgroundTint="@color/orange"
             app:layout_constraintTop_toBottomOf="@+id/tv_analizeq"
             app:layout_constraintStart_toEndOf="@id/cardView"
             app:layout_constraintEnd_toEndOf="parent"
@@ -101,8 +101,7 @@
             <!-- Content inside CardView -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/gradient_border">
+                android:layout_height="match_parent">
 
                 <TextView
                     android:id="@+id/tv_expenditure"
@@ -110,7 +109,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_bold"
                     android:text="@string/expenditure"
-                    android:textColor="@color/orange"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -122,7 +121,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_bold"
                     android:text="@string/value_expenditure"
-                    android:textColor="@color/red"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     app:layout_constraintTop_toBottomOf="@id/tv_expenditure"
                     app:layout_constraintStart_toStartOf="parent"
@@ -135,7 +134,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_bold"
                     android:text="@string/see_details"
-                    android:textColor="@color/orange"
+                    android:textColor="@color/white"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -192,7 +191,6 @@
             android:text="@string/manual"
             android:fontFamily="@font/poppins_bold"
             android:layout_marginEnd="32dp"/>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

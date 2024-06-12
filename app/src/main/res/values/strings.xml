@@ -30,7 +30,7 @@
     <string name="title_education">Title</string>
     <string name="amoeba">Amoeba</string>
     <string name="profile">Profile</string>
-    <string name="otp_verivication">OTP Verivication</string>
+    <string name="otp_verivication">OTP Verification</string>
     <string name="desc_otp">Enter the OTP sent to amoeba@bangkit.academy</string>
     <string name="verify_and_continue">Verify and Continue</string>
     <string name="text_banner">Saving money is saving your life</string>
@@ -63,6 +63,16 @@
     <string name="details_your_expenditure">Your Expenditure</string>
     <string name="details_expenditure">Details Expenses</string>
     <string name="details_income">Details Income</string>
+    <string name="logo_financyq">Logo_FinancyQ</string>
+    <string name="logo_otp">Logo_Otp</string>
+    <string name="otp">OTP</string>
+    <string name="bg_background">Bg_Background</string>
+    <string name="enter_the_otp_sent_to">Enter the OTP sent to</string>
+    <string name="resend">RESEND</string>
+    <string name="didn_t_receive_otp_or_expired">Didn’t receive OTP or Expired?</string>
+    <string name="title_set">Congratulations!</string>
+    <string name="message_set">Your data has been successfully registered\n\nPlease check your email for the OTP code</string>
+    <string name="continue_set">Continue</string>
 
     <!--    hapus aja ini ais-->
     <string-array name="welcome_texts">

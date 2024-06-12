@@ -9,7 +9,7 @@ import android.view.animation.AnimationUtils
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.financyq.R
-import com.example.financyq.WelcomeActivity
+import com.example.financyq.ui.welcome.WelcomeActivity
 import com.example.financyq.databinding.ActivitySplashBinding
 
 class SplashActivity : AppCompatActivity() {
