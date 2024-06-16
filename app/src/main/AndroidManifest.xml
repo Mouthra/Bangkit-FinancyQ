@@ -8,12 +8,19 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_logo_financyq"
+        android:icon="@mipmap/ic_logo_financy_q"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FinancyQ"
         tools:targetApi="31">
+        <activity
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity
+            android:name=".ui.result.ResultActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.details.DetailsExpenditureActivity"
             android:exported="false" />

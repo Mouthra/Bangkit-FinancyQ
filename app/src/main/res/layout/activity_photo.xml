@@ -39,7 +39,7 @@
         android:layout_marginTop="100dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_camera"
+        app:layout_constraintBottom_toTopOf="@+id/cameraButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +47,7 @@
         app:srcCompat="@drawable/ic_place_holder" />
 
     <Button
-        android:id="@+id/btn_camera"
+        android:id="@+id/cameraButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -57,13 +57,13 @@
         android:textColor="@color/orange"
         android:fontFamily="@font/poppins_bold"
         android:background="@drawable/btn_transparent_with_border"
-        app:layout_constraintBottom_toTopOf="@+id/btn_gallery"
+        app:layout_constraintBottom_toTopOf="@+id/galleryButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btn_gallery"
+        android:id="@+id/galleryButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -73,13 +73,13 @@
         android:textColor="@color/orange"
         android:fontFamily="@font/poppins_bold"
         android:background="@drawable/btn_transparent_with_border"
-        app:layout_constraintBottom_toTopOf="@+id/btn_analyze"
+        app:layout_constraintBottom_toTopOf="@+id/analyzeButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btn_analyze"
+        android:id="@+id/analyzeButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
