@@ -64,12 +64,13 @@
                         app:tint="@color/orange" />
 
                     <TextView
+                        android:id="@+id/getUsername"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/poppins"
                         android:gravity="center_vertical"
-                        android:text="@string/amoeba"
+                        tools:text="@string/amoeba"
                         android:textColor="@color/orange"
                         android:textSize="18sp" />
                 </LinearLayout>

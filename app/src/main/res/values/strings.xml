@@ -5,7 +5,7 @@
     <string name="message_login_page">Sign in to Continue</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
-    <string name="hello">Hello!</string>
+    <string name="hello">Hello,</string>
     <string name="name">Name</string>
     <string name="signup">Sign Up</string>
     <string name="message_signup_page">Create a new Account</string>
@@ -75,8 +75,8 @@
     <string name="save_expenditure">Save Expenditure</string>
     <string name="details_your_income">Your Income</string>
     <string name="details_your_expenditure">Your Expenditure</string>
-    <string name="details_expenditure">Details Expenditure</string>
-    <string name="details_income">Details Income</string>
+    <string name="details_expenditure">Details\nExpenditure</string>
+    <string name="details_income">Details\nIncome</string>
     <string name="logo_financyq">Logo_FinancyQ</string>
     <string name="logo_otp">Logo_Otp</string>
     <string name="otp">OTP</string>
@@ -97,6 +97,20 @@
     <string name="No">No</string>
     <string name="set_title">Confirm</string>
     <string name="set_message">Do you want to exit the application?</string>
+    <string name="invalid_email_format">Email Format Wrong!</string>
+    <string name="password_length_alert">Password must not be less than 8 Characters</string>
+    <string name="example_expenditure">Example : buy something</string>
+    <string name="example_price">Example : 250000</string>
+    <string name="example_category_expend">Example : Salary</string>
+    <string name="example_category_income">Example : Salary</string>
+    <string name="example_income">Example : Invest</string>
+    <string name="save">Save</string>
+    <string name="source">Source</string>
+    <string name="example_source">Example : Manual</string>
+    <string name="manual_text">Manual</string>
+    <string name="category">Category</string>
+    <string name="total_expenditure">Total of Expenditure</string>
+    <string name="export_pdf">Export PDF</string>
 
     <!--    hapus aja ini ais-->
     <string-array name="welcome_texts">

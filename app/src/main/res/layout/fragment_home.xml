@@ -39,6 +39,21 @@
             app:layout_constraintStart_toEndOf="@+id/icon_home"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/tv_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/poppins_bold"
+            tools:text="Username"
+            android:textColor="@color/orange"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/tv_hello"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <FrameLayout
             android:id="@+id/banner"
             android:layout_width="match_parent"
@@ -100,6 +115,18 @@
             app:layout_constraintTop_toBottomOf="@id/tv_income_expenditure" />
 
         <TextView
+            android:id="@+id/tv_value_income"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@id/text_income"
+            app:layout_constraintTop_toBottomOf="@+id/tv_income_expenditure"
+            android:fontFamily="@font/poppins_bold"
+            tools:text="@string/value_income" />
+
+        <TextView
             android:id="@+id/text_expenditure"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -110,6 +137,18 @@
             android:fontFamily="@font/poppins_bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_income" />
+
+        <TextView
+            android:id="@+id/tv_value_expenditure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@id/text_expenditure"
+            app:layout_constraintTop_toBottomOf="@id/text_income"
+            android:fontFamily="@font/poppins_bold"
+            tools:text="@string/value_expenditure" />
 
         <Button
             android:id="@+id/btn_details_income"
@@ -182,17 +221,17 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_edufinance"
             app:layout_constraintVertical_bias="0.0" />
 
-        <ProgressBar
-            android:id="@+id/progressBar2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            app:layout_constraintBottom_toTopOf="@+id/btn_details_income"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.575"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_income_expenditure"
-            app:layout_constraintVertical_bias="0.2" />
+<!--        <ProgressBar-->
+<!--            android:id="@+id/progressBar2"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@android:color/transparent"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/btn_details_income"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.801"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/tv_income_expenditure"-->
+<!--            app:layout_constraintVertical_bias="0.6" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

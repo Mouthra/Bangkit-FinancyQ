@@ -25,12 +25,80 @@ class UserPreferences(context: Context) {
         }
     }
 
+    suspend fun saveIdUser(idUser: String){
+        dataStore.edit { preferences ->
+            preferences[USER_ID_KEY] = idUser
+        }
+    }
+
+    suspend fun clearUserId(){
+        dataStore.edit { preferences ->
+            preferences.remove(USER_ID_KEY)
+        }
+    }
+
+    suspend fun saveIdtransactionincome(idTransaksiPemasukan: String){
+        dataStore.edit { preferences ->
+            preferences[ID_TRANSACTION_INCOME_KEY] = idTransaksiPemasukan
+        }
+    }
+
+    suspend fun clearIdtansactionincome(){
+        dataStore.edit { preferences ->
+            preferences.remove(ID_TRANSACTION_INCOME_KEY)
+        }
+    }
+
+    suspend fun saveIdtransactionexpenditure(idTransaksiPengeluaran: String){
+        dataStore.edit { preferences ->
+            preferences[ID_TRANSACTION_EXPENDITURE_KEY] = idTransaksiPengeluaran
+        }
+    }
+
+    suspend fun clearIdtransactionexpenditure(){
+        dataStore.edit { preferences ->
+            preferences.remove(ID_TRANSACTION_EXPENDITURE_KEY)
+        }
+    }
+
+    suspend fun saveUsername(username: String){
+        dataStore.edit { preferences ->
+            preferences[USERNAME_KEY] = username
+        }
+    }
+
+    suspend fun clearUsername(){
+        dataStore.edit { preferences ->
+            preferences.remove(USERNAME_KEY)
+        }
+    }
+
     val tokenFlow: Flow<String?> =dataStore.data.map { preferences ->
         preferences[TOKEN_KEY]
     }
 
+    val userIdFlow: Flow<String?> =dataStore.data.map { preferences ->
+        preferences[USER_ID_KEY]
+    }
+
+    val idTransactionIncomeFlow: Flow<String?> = dataStore.data.map { preferences ->
+        preferences[ID_TRANSACTION_INCOME_KEY]
+    }
+
+    val idTransactionExpenditureFlow: Flow<String?> = dataStore.data.map { preferences ->
+        preferences[ID_TRANSACTION_EXPENDITURE_KEY]
+    }
+
+    val userNameFlow: Flow<String?> = dataStore.data.map { preferences ->
+        preferences[USERNAME_KEY]
+    }
+
     companion object{
         private val TOKEN_KEY = stringPreferencesKey("refreshToken")
+        private val USER_ID_KEY = stringPreferencesKey("userId")
+        private val ID_TRANSACTION_INCOME_KEY = stringPreferencesKey("idTransaksiPemasukan")
+        private val ID_TRANSACTION_EXPENDITURE_KEY = stringPreferencesKey("idTransaksiPengeluaran")
+        private val USERNAME_KEY = stringPreferencesKey("username")
 
         @Volatile
         private var INSTANCE: UserPreferences? = null

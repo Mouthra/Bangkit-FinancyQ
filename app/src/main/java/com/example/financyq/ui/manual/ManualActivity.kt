@@ -17,6 +17,9 @@ class ManualActivity : AppCompatActivity() {
         setContentView(binding.root)
         setupViews()
 //        setupView()
+        binding.btnBack.setOnClickListener{
+            finish()
+        }
     }
 
 //    private fun setupView() {

@@ -45,18 +45,21 @@ class SignupActivity : AppCompatActivity() {
                                 setTitle(R.string.title_set)
                                 setMessage(R.string.message_set)
                                 setPositiveButton(R.string.continue_set) { _, _ ->
-                                    val intent = Intent(context, OtpActivity::class.java)
-                                    intent.putExtra(OtpActivity.EXTRA_EMAIL, email)
+                                    val intent = Intent(context, OtpActivity::class.java).apply {
+                                        putExtra(OtpActivity.EXTRA_EMAIL, email)
+                                        putExtra(OtpActivity.EXTRA_USERNAME, username)
+                                        putExtra(OtpActivity.EXTRA_PASSWORD, password)
+                                    }
                                     startActivity(intent)
                                     finish()
                                 }
+                                setCancelable(false)
                                 create()
                                 show()
                             }
                         }
 
                         is Result.Loading -> {
-                            // Tidak perlu tindakan khusus saat loading
                         }
 
                         is Result.Error -> {

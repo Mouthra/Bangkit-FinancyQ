@@ -41,7 +41,7 @@ class OtpActivity : AppCompatActivity() {
     private fun resendSignup() {
         email = intent.getStringExtra(EXTRA_EMAIL).toString()
         password = intent.getStringExtra(EXTRA_PASSWORD).toString()
-//        username = intent.getStringExtra(EXTRA_USERNAME).toString()
+        username = intent.getStringExtra(EXTRA_USERNAME).toString()
 
         val signupRequest = SignupRequest(username, email, password)
         otpViewModel.resendSignup(signupRequest).observe(this) { result ->
@@ -53,6 +53,7 @@ class OtpActivity : AppCompatActivity() {
                         setPositiveButton("OK") { dialog, _ ->
                             dialog.dismiss()
                         }
+                        setCancelable(false)
                         create()
                         show()
                     }
@@ -70,7 +71,6 @@ class OtpActivity : AppCompatActivity() {
 
     private fun setupAction() {
         email = intent.getStringExtra(EXTRA_EMAIL).toString()
-//        otp = intent.getStringExtra(EXTRA_OTP).toString()
         binding.tvDescEmail.text = email
         binding.btnVerify.setOnClickListener {
             val otp = binding.OtpEditText.text.toString()

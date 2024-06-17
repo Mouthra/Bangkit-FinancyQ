@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.financyq.MainActivity
@@ -11,6 +12,7 @@ import com.example.financyq.R
 import com.example.financyq.data.local.UserPreferences
 import com.example.financyq.ui.welcome.WelcomeActivity
 import com.example.financyq.databinding.ActivitySplashBinding
+import com.example.financyq.ui.home.HomeFragment
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
@@ -23,6 +25,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        enableEdgeToEdge()
         setAnimation()
 
         val userPreferences = UserPreferences.getInstance(this)

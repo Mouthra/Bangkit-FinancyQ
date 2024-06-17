@@ -8,43 +8,19 @@ import com.example.financyq.data.response.SignUpResponse
 import com.example.financyq.data.di.Result
 import com.example.financyq.data.local.UserPreferences
 import com.example.financyq.data.request.LoginRequest
+import com.example.financyq.data.request.LogoutRequest
 import com.example.financyq.data.request.OtpRequest
 import com.example.financyq.data.request.SignupRequest
 import com.example.financyq.data.response.LoginResponse
+import com.example.financyq.data.response.LogoutResponse
 import com.example.financyq.data.response.OtpResponse
 import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import org.json.JSONObject
 import retrofit2.HttpException
 
 class UserRepository(private val apiService: ApiService, private val userPreferences: UserPreferences) {
-//    fun signup(username: String, email: String, password: String): LiveData<Result<SignUpResponse>> =
-//        liveData {
-//            emit(Result.Loading)
-//            try {
-//                val response = apiService.signup(username, email, password)
-//                if (response.isSuccessful) {
-//                    val responseBody = response.body()
-//                    if (responseBody != null) {
-//                        if (responseBody.success == true) {
-//                            emit(Result.Success(responseBody))
-//                        } else {
-//                            emit(Result.Error(responseBody.message ?: "Unknown error"))
-//                        }
-//                    } else {
-//                        emit(Result.Error("Response body is null"))
-//                    }
-//                } else {
-//                    emit(Result.Error("Unsuccessful response"))
-//                }
-//            } catch (e: HttpException) {
-//                val errorBody = e.response()?.errorBody()?.string()
-//                val errorResponse = Gson().fromJson(errorBody, SignUpResponse::class.java)
-//                emit(Result.Error(errorResponse.message ?: "Uknown Error"))
-//            } catch (e: Exception) {
-//                emit(Result.Error(e.message ?: "Expected occurred"))
-//            }
-//        }
 
     fun register(signupRequest: SignupRequest): LiveData<Result<SignUpResponse>> =
         liveData {
@@ -102,38 +78,6 @@ class UserRepository(private val apiService: ApiService, private val userPrefere
             }
         }
 
-//    fun login(loginRequest: LoginRequest): LiveData<Result<LoginResponse>> =
-//        liveData {
-//            emit(Result.Loading)
-//            try {
-//                val response = apiService.login(loginRequest)
-//                if (response.isSuccessful) {
-//                    val responseBody = response.body()
-//                    if (responseBody != null) {
-//                        if (responseBody.error == true) {
-//                            emit(kotlin.Result.Error(responseBody.message ?: "Unknown error"))
-//                        } else {
-//                            emit(kotlin.Result.Success(responseBody))
-//                            responseBody.loginResult?.refreshToken?.let { token ->
-//                                userPreferences.saveToken(token)
-//                                Log.d("Login", "Token saved: $token")
-//                            }
-//                        }
-//                    } else {
-//                        emit(Result.Error("Response body is null"))
-//                    }
-//                } else {
-//                    emit(Result.Error(response.message() ?: "Unknown error"))
-//                }
-//            } catch (e: HttpException) {
-//                val errorBody = e.response()?.errorBody()?.string()
-//                val errorResponse = Gson().fromJson(errorBody, LoginResponse::class.java)
-//                emit(Result.Error(errorResponse.message ?: "Unknown error"))
-//            } catch (e: Exception) {
-//                emit(Result.Error(e.message ?: "Exception occurred"))
-//            }
-//        }
-
     fun login(loginRequest: LoginRequest): LiveData<Result<LoginResponse>> = liveData {
         emit(Result.Loading)
         try {
@@ -146,19 +90,61 @@ class UserRepository(private val apiService: ApiService, private val userPrefere
                             userPreferences.saveToken(token)
                         }
                     }
+                    responseBody.userId?.let { id ->
+                        withContext(Dispatchers.IO) {
+                            userPreferences.saveIdUser(id)
+                        }
+                    }
+                    responseBody.username?.let { username ->
+                        withContext(Dispatchers.IO) {
+                            userPreferences.saveUsername(username)
+                        }
+                    }
                     emit(Result.Success(responseBody))
                 } else {
                     emit(Result.Error("Response body is null"))
                 }
             } else {
-                emit(Result.Error("Unsuccessful response"))
+                val errorBody = response.errorBody()?.string()
+                val errorMessage = if (response.code() == 400 && errorBody != null) {
+                    val json = JSONObject(errorBody)
+                    json.optString("message", "Email atau password salah")
+                } else {
+                    "Unsuccessful response"
+                }
+                emit(Result.Error(errorMessage))
+            }
+        } catch (e: Exception) {
+            emit(Result.Error(e.message.toString()))
+        }
+    }
+
+    fun logout(logoutRequest: LogoutRequest): LiveData<Result<LogoutResponse>> = liveData {
+        emit(Result.Loading)
+        try {
+            val response = apiService.logout(logoutRequest)
+            if (response.isSuccessful) {
+                withContext(Dispatchers.IO) {
+                    Log.e("Logout", "Token cleared")
+                    userPreferences.apply {
+                        clearToken()
+                        Log.e("Logout", "Token cleared successfully")
+                        clearUserId()
+                        Log.e("Logout", "User ID cleared successfully")
+                        clearIdtansactionincome()
+                        Log.e("Logout", "Transaction ID cleared successfully")
+                        clearIdtransactionexpenditure()
+                        clearUsername()
+                    }
+                }
+                emit(Result.Success(response.body()!!))
+            } else {
+                emit(Result.Error("Logout unsuccessful"))
             }
         } catch (e: HttpException) {
-            val errorBody = e.response()?.errorBody()?.string()
-            val errorResponse = Gson().fromJson(errorBody, LoginResponse::class.java)
-            emit(Result.Error(errorResponse?.refreshToken ?: "Unknown error"))
+            emit(Result.Error(e.message ?: "Unknown error"))
         } catch (e: Exception) {
-            emit(Result.Error(e.message ?: "Exception occurred"))
+            emit(Result.Error(e.message ?: "Unexpected error occurred"))
         }
     }
 

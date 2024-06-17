@@ -38,20 +38,32 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this, "Email and password cannot be empty", Toast.LENGTH_SHORT).show()
             } else {
                 val loginRequest = LoginRequest(email, password)
-                loginViewModel.login(loginRequest).observe(this, Observer { result ->
+                loginViewModel.login(loginRequest).observe(this) { result ->
                     when (result) {
                         is Result.Loading -> {
-                            // Tampilkan progress bar atau loading indicator
+
                         }
+
                         is Result.Success -> {
-                            result.data.refreshToken
                             showCongratulationsDialog()
                         }
+
                         is Result.Error -> {
-                            Toast.makeText(this, result.error, Toast.LENGTH_SHORT).show()
+                            val errorMessage = result.error
+                            when {
+                                errorMessage.contains("Invalid password") -> {
+                                    Toast.makeText(this, "Invalid Password", Toast.LENGTH_SHORT).show()
+                                }
+                                errorMessage.contains("User not found") -> {
+                                    Toast.makeText(this, "Email not found", Toast.LENGTH_SHORT).show()
+                                }
+                                else -> {
+                                    Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
+                                }
+                            }
                         }
                     }
-                })
+                }
             }
         }
     }
@@ -66,6 +78,7 @@ class LoginActivity : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             }
+            setCancelable(false)
             create()
             show()
         }

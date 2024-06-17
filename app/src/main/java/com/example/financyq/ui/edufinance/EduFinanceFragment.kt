@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.financyq.ui.adapter.EduFinanceAdapter
 import com.example.financyq.data.di.Result
@@ -35,6 +36,7 @@ class EduFinanceFragment : Fragment() {
         setupRecyclerView()
         setObserver()
     }
+
 
     private fun setupRecyclerView() {
         eduFinanceAdapter = EduFinanceAdapter()

@@ -1,4 +1,4 @@
-// LoginViewModel.kt
+
 package com.example.financyq.ui.login
 
 import androidx.lifecycle.ViewModel
