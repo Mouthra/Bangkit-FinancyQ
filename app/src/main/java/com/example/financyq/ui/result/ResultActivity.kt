@@ -1,7 +1,10 @@
 package com.example.financyq.ui.result
 
+import android.content.ContentValues
+import android.content.ContentValues.TAG
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -14,7 +17,7 @@ class ResultActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding =ActivityResultBinding.inflate(layoutInflater)
-        setContentView(R.layout.activity_result)
+        setContentView(binding.root)
 
         val score = intent.getStringExtra(EXTRA_SCORE)
         val image = intent.getStringExtra(EXTRA_IMAGE)
@@ -22,6 +25,10 @@ class ResultActivity : AppCompatActivity() {
         val imageUri = Uri.parse(image)
         binding.resultText.text = "$score $prediction"
         binding.resultImage.setImageURI(imageUri)
+
+        Log.d(TAG, "Score: $score")
+        Log.d(TAG, "Image: $image")
+        Log.d(TAG, "Prediction: $prediction")
     }
     companion object {
         const val EXTRA_IMAGE = "extra_image"

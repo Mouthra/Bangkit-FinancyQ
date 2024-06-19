@@ -2,6 +2,7 @@ package com.example.financyq.ui.photo
 
 import android.Manifest
 import android.content.ContentValues
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -117,6 +118,7 @@ class PhotoActivity : AppCompatActivity(), ImageClassifierHelper.ClassifierListe
             context = this,
             classifierListener = this
         ).classifyStaticImage(currentImageUri!!)
+
     }
 
     private fun moveToResult() {
@@ -124,6 +126,7 @@ class PhotoActivity : AppCompatActivity(), ImageClassifierHelper.ClassifierListe
         intent.putExtra(ResultActivity.EXTRA_IMAGE, currentImageUri.toString())
         intent.putExtra(ResultActivity.EXTRA_PREDICTION, currentLabel.toString())
         intent.putExtra(ResultActivity.EXTRA_SCORE, currentConfidenceScore.toString())
+        //tambahin putExtra ke manual activity untuk
         startActivity(intent)
     }
 
@@ -146,7 +149,8 @@ class PhotoActivity : AppCompatActivity(), ImageClassifierHelper.ClassifierListe
     private fun generateResult(data: List<Classifications>?) {
         data?.let { it ->
             if (it.isNotEmpty() && it[0].categories.isNotEmpty()) {
-                println(it)
+                Log.e("aisyah", "generateResult: $it", )
+                Log.e("aisyah2", "generateResult: ${it[0]}", )
                 val highestResult =
                     it[0].categories.maxBy {
                         it?.score ?: 0.0f
