@@ -72,18 +72,18 @@ class DetailsExpenditureActivity : AppCompatActivity() {
             viewModel.getDetailExpenditure(idUser).observe(this) { result ->
                 when (result) {
                     is Result.Loading -> {
-                        Log.d("DetailsExpenditureActivity", "Loading data...")
+//                        Log.d("DetailsExpenditureActivity", "Loading data...")
                     }
                     is Result.Success -> {
                         result.data.transactions?.let {
                             val sortedTransactions =
                                 it.sortedByDescending { transaction -> transaction?.tanggal }
                             adapter.submitList(sortedTransactions)
-                            Log.d("DetailsExpenditureActivity", "Data loaded successfully")
+//                            Log.d("DetailsExpenditureActivity", "Data loaded successfully")
                         }
                     }
                     is Result.Error -> {
-                        Log.e("DetailsExpenditureActivity", "Error loading data: ${result.error}")
+//                        Log.e("DetailsExpenditureActivity", "Error loading data: ${result.error}")
                     }
                 }
             }
@@ -120,10 +120,10 @@ class DetailsExpenditureActivity : AppCompatActivity() {
                                 is Result.Success -> {
                                     dialog.dismiss()
                                     observeViewModel()
-                                    Log.d("DetailsExpenditureActivity", result.data.message ?: "Transaction removed")
+//                                    Log.d("DetailsExpenditureActivity", result.data.message ?: "Transaction removed")
                                 }
                                 is Result.Error -> {
-                                    Log.e("DetailsExpenditureActivity", "Error deleting expenditure: ${result.error}")
+//                                    Log.e("DetailsExpenditureActivity", "Error deleting expenditure: ${result.error}")
                                 }
                             }
                         }
@@ -139,8 +139,8 @@ class DetailsExpenditureActivity : AppCompatActivity() {
 
         bindingSheet.btnSave.setOnClickListener {
             AlertDialog.Builder(this).apply {
-                setTitle("Konfirmasi Simpan")
-                setMessage("Apakah Anda yakin dengan perubahan ini?")
+                setTitle("Confirmation")
+                setMessage("Are you sure about this change")
                 setPositiveButton("Ya") { _, _ ->
                     val updateExpenditureRequest = UpdateExpenditureRequest(
                         jumlah = bindingSheet.EditTotalExpenditure.text.toString().replace("[Rp.]".toRegex(), "").toInt(),
@@ -162,7 +162,7 @@ class DetailsExpenditureActivity : AppCompatActivity() {
                                 }
                                 is Result.Error -> {
                                     // Tangani error
-                                    Log.e("DetailsExpenditureActivity", "Error updating expenditure: ${result.error}")
+//                                    Log.e("DetailsExpenditureActivity", "Error updating expenditure: ${result.error}")
                                 }
                             }
                         }

@@ -22,7 +22,6 @@ class OtpActivity : AppCompatActivity() {
     private var email = ""
     private var password = ""
     private var username = ""
-//    private var otp = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,10 +58,9 @@ class OtpActivity : AppCompatActivity() {
                     }
                 }
                 is Result.Loading -> {
-                    // Tampilkan indikator loading jika diperlukan
+                    // Show loading indicator if needed
                 }
                 is Result.Error -> {
-                    // Jika gagal, tampilkan pesan kesalahan
                     Toast.makeText(this, result.error, Toast.LENGTH_SHORT).show()
                 }
             }
@@ -82,9 +80,18 @@ class OtpActivity : AppCompatActivity() {
                 otpViewModel.verifyOtp(otpRequest).observe(this) { result ->
                     when (result) {
                         is Result.Success -> {
-                            Toast.makeText(this, "Verification successful", Toast.LENGTH_SHORT).show()
-                            startActivity(Intent(this, LoginActivity::class.java))
-                            finish()
+                            AlertDialog.Builder(this).apply {
+                                setTitle("Verification successful")
+                                setMessage("OTP verification was successful.")
+                                setPositiveButton("OK") { dialog, _ ->
+                                    dialog.dismiss()
+                                    startActivity(Intent(this@OtpActivity, LoginActivity::class.java))
+                                    finish()
+                                }
+                                setCancelable(false)
+                                create()
+                                show()
+                            }
                         }
                         is Result.Loading -> {
                             // Show loading indicator if needed
@@ -102,6 +109,5 @@ class OtpActivity : AppCompatActivity() {
         const val EXTRA_EMAIL = "EXTRA_EMAIL"
         const val EXTRA_USERNAME = "EXTRA_USERNAME"
         const val EXTRA_PASSWORD = "EXTRA_PASSWORD"
-//        const val EXTRA_OTP = "EXTRA OTP"
     }
 }

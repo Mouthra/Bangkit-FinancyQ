@@ -10,6 +10,7 @@ import com.example.financyq.data.repo.DeleteIncomeRepository
 import com.example.financyq.data.repo.DetailExpenditureRepository
 import com.example.financyq.data.repo.DetailIncomeRepository
 import com.example.financyq.data.repo.EduFinanceRepository
+import com.example.financyq.data.repo.ExportPdfRepository
 //import com.example.financyq.data.repo.ExportPdfRepository
 import com.example.financyq.data.repo.TotalExpenditureRepository
 import com.example.financyq.data.repo.TotalIncomeRepository
@@ -17,6 +18,7 @@ import com.example.financyq.data.repo.UpdateExpenditureRepository
 import com.example.financyq.data.repo.UpdateIncomeRepository
 import com.example.financyq.data.repo.UserRepository
 import com.example.financyq.data.repo.UsernameRepository
+import com.example.financyq.ui.analizeq.ExportPdfViewModel
 //import com.example.financyq.ui.analizeq.ExportPdfViewModel
 import com.example.financyq.ui.analizeq.TotalExpenditureViewModel
 import com.example.financyq.ui.analizeq.TotalIncomeViewModel
@@ -48,8 +50,8 @@ class ViewModelFactory(
     private val deleteExpenditureRepository: DeleteExpenditureRepository,
     private val totalIncomeRepository: TotalIncomeRepository,
     private val totalExpenditureRepository: TotalExpenditureRepository,
-    private val usernameRepository: UsernameRepository
-//    private val exportPdfRepository: ExportPdfRepository
+    private val usernameRepository: UsernameRepository,
+    private val exportPdfRepository: ExportPdfRepository
 ): ViewModelProvider.NewInstanceFactory() {
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -99,9 +101,9 @@ class ViewModelFactory(
             modelClass.isAssignableFrom(TotalExpenditureViewModel::class.java) -> {
                 TotalExpenditureViewModel(totalExpenditureRepository) as T
             }
-//            modelClass.isAssignableFrom(ExportPdfViewModel::class.java) -> {
-//                ExportPdfViewModel(exportPdfRepository) as T
-//            }
+            modelClass.isAssignableFrom(ExportPdfViewModel::class.java) -> {
+                ExportPdfViewModel(exportPdfRepository) as T
+            }
             modelClass.isAssignableFrom(UsernameViewModel::class.java) -> {
                 UsernameViewModel(usernameRepository) as T
             }
@@ -127,7 +129,7 @@ class ViewModelFactory(
             val deleteExpenditureRepository = Injection.provideDeleteExpenditureRepository(context)
             val totalIncomeRepository = Injection.provideTotalIncomeRepository(context)
             val totalExpenditureRepository = Injection.provideTotalExpenditureRepository(context)
-//            val exportPdfRepository = Injection.provideExportPdfRepository(context)
+            val exportPdfRepository = Injection.provideExportPdfRepository(context)
             val usernameRepository = Injection.provideUsernameRepository(context)
 
             return INSTANCE ?: synchronized(ViewModelFactory::class.java) {
@@ -144,8 +146,8 @@ class ViewModelFactory(
                     deleteExpenditureRepository,
                     totalIncomeRepository,
                     totalExpenditureRepository,
-                    usernameRepository)
-//                    exportPdfRepository)
+                    usernameRepository,
+                    exportPdfRepository)
                     .also { INSTANCE = it }
             }
         }

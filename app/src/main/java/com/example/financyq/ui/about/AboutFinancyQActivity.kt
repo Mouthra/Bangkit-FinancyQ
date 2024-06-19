@@ -1,13 +1,7 @@
 package com.example.financyq.ui.about
 
-import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.financyq.R
 import com.example.financyq.databinding.ActivityAboutFinancyQBinding
 
 class AboutFinancyQActivity : AppCompatActivity() {

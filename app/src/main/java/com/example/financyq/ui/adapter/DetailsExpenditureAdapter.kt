@@ -10,7 +10,7 @@ import com.example.financyq.data.response.TransactionsItem
 import com.example.financyq.databinding.ItemListDetailsexpenditureBinding
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
-import java.util.Locale
+import java.util.*
 
 class DetailsExpenditureAdapter(private val onItemClick: (TransactionsItem) -> Unit) : ListAdapter<TransactionsItem, DetailsExpenditureAdapter.DetailExpenditureViewHolder>(DIFF_CALLBACK) {
 
@@ -42,19 +42,26 @@ class DetailsExpenditureAdapter(private val onItemClick: (TransactionsItem) -> U
         private fun formatDateTime(dateTime: String?): String {
             return if (dateTime != null) {
                 try {
+                    val serverTimeZone = TimeZone.getTimeZone("Asia/Jakarta")
+                    val userTimeZone = TimeZone.getDefault()
+
                     val inputFormat = SimpleDateFormat("EEEE, dd MMMM yyyy, HH:mm", Locale("in", "ID"))
-                    val outputFormat = SimpleDateFormat("EEEE, dd MMMM yyyy, HH:mm", Locale("in", "ID"))
+                    inputFormat.timeZone = serverTimeZone
+
+                    val outputFormat = SimpleDateFormat("EEEE, dd MMMM yyyy, HH:mm", Locale.getDefault())
+                    outputFormat.timeZone = userTimeZone
+
                     val date = inputFormat.parse(dateTime)
                     if (date != null) {
                         outputFormat.format(date)
                     } else {
-                        "Unknown Date"
+                        "Tanggal Tidak Diketahui"
                     }
                 } catch (e: Exception) {
-                    "Invalid Date"
+                    "Tanggal Tidak Valid"
                 }
             } else {
-                "Unknown Date"
+                "Tanggal Tidak Diketahui"
             }
         }
 

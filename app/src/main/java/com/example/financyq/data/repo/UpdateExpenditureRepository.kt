@@ -4,12 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.example.financyq.data.api.ApiService
 import com.example.financyq.data.di.Result
-import com.example.financyq.data.local.UserPreferences
 import com.example.financyq.data.request.UpdateExpenditureRequest
 import com.example.financyq.data.response.UpdateExpenditureResponse
 import retrofit2.HttpException
 
-class UpdateExpenditureRepository(private val apiService: ApiService, private val userPreferences: UserPreferences) {
+class UpdateExpenditureRepository(private val apiService: ApiService) {
 
     fun updateExpenditure(idTransaksiPengeluaran: String, updateExpenditureRequest: UpdateExpenditureRequest): LiveData<Result<UpdateExpenditureResponse>> {
         return liveData {
@@ -40,9 +39,9 @@ class UpdateExpenditureRepository(private val apiService: ApiService, private va
         @Volatile
         private var instance: UpdateExpenditureRepository? = null
 
-        fun getInstance(apiService: ApiService, userPreferences: UserPreferences): UpdateExpenditureRepository =
+        fun getInstance(apiService: ApiService): UpdateExpenditureRepository =
             instance ?: synchronized(this) {
-                instance ?: UpdateExpenditureRepository(apiService, userPreferences)
+                instance ?: UpdateExpenditureRepository(apiService)
                     .also { instance = it }
             }
     }

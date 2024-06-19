@@ -7,13 +7,11 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import com.example.financyq.MainActivity
 import com.example.financyq.data.request.LoginRequest
 import com.example.financyq.data.di.Result
 import com.example.financyq.data.di.ViewModelFactory
 import com.example.financyq.databinding.ActivityLoginBinding
-import com.example.financyq.ui.home.HomeFragment
 
 class LoginActivity : AppCompatActivity() {
 

@@ -93,12 +93,18 @@ class UserPreferences(context: Context) {
         preferences[USERNAME_KEY]
     }
 
+    val emailFlow: Flow<String?> = dataStore.data.map { preferences ->
+        preferences[EMAIL_KEY]
+    }
+
     companion object{
         private val TOKEN_KEY = stringPreferencesKey("refreshToken")
         private val USER_ID_KEY = stringPreferencesKey("userId")
         private val ID_TRANSACTION_INCOME_KEY = stringPreferencesKey("idTransaksiPemasukan")
         private val ID_TRANSACTION_EXPENDITURE_KEY = stringPreferencesKey("idTransaksiPengeluaran")
         private val USERNAME_KEY = stringPreferencesKey("username")
+        private val EMAIL_KEY = stringPreferencesKey("email")
+        private val PASSWORD_KEY = stringPreferencesKey("password")
 
         @Volatile
         private var INSTANCE: UserPreferences? = null

@@ -12,7 +12,6 @@ import com.example.financyq.R
 import com.example.financyq.data.local.UserPreferences
 import com.example.financyq.ui.welcome.WelcomeActivity
 import com.example.financyq.databinding.ActivitySplashBinding
-import com.example.financyq.ui.home.HomeFragment
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch

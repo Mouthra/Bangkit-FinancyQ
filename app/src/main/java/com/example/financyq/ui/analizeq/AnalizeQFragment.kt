@@ -2,14 +2,13 @@ package com.example.financyq.ui.analizeq
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Environment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.example.financyq.BuildConfig
 import com.example.financyq.data.di.Result
 import com.example.financyq.data.di.ViewModelFactory
 import com.example.financyq.data.local.UserPreferences
@@ -21,7 +20,9 @@ import com.example.financyq.ui.manual.ManualActivity
 import com.example.financyq.ui.photo.PhotoActivity
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
+import okhttp3.ResponseBody
 import java.io.File
+import java.io.FileOutputStream
 import java.text.NumberFormat
 import java.util.Locale
 
@@ -38,9 +39,10 @@ class AnalizeQFragment : Fragment() {
         ViewModelFactory.getInstance(requireContext())
     }
 
-//    private val exportPdfViewModel: ExportPdfViewModel by viewModels {
-//        ViewModelFactory.getInstance(requireContext())
-//    }
+    private val exportPdfViewModel: ExportPdfViewModel by viewModels {
+        ViewModelFactory.getInstance(requireContext())
+    }
+
 
     private lateinit var userPreferences: UserPreferences
 
@@ -61,7 +63,6 @@ class AnalizeQFragment : Fragment() {
         observeTotalIncome()
         observeTotalExpenditure()
         setupAction()
-//        setupActionPdf()
     }
 
     private fun observeTotalIncome() {
@@ -141,49 +142,67 @@ class AnalizeQFragment : Fragment() {
         binding.tvDetailsExpenditure.setOnClickListener {
             startActivity(Intent(requireContext(), DetailsExpenditureActivity::class.java))
         }
+        binding.btnExportPdf.setOnClickListener {
+            exportPdf()
+        }
     }
 
-//    private fun setupActionPdf() {
-//        binding.btnExportPdf.setOnClickListener {
-//            exportPdf()
-//        }
-//    }
-//
-//    private fun exportPdf() {
-//        val userId = runBlocking { userPreferences.userIdFlow.first() }
-//
-//        userId?.let {
-//            exportPdfViewModel.exportPDF(it, requireContext()).observe(viewLifecycleOwner) { result ->
-//                when (result) {
-//                    is Result.Loading -> {
-//                        // Tampilkan indikator loading jika diperlukan
-//                    }
-//                    is Result.Success -> {
-//                        // Proses berhasil, tampilkan pesan atau lakukan aksi lain
-//                        showExportSuccessMessage(result.data)
-//                    }
-//                    is Result.Error -> {
-//                        // Tangani error jika terjadi
-//                    }
-//                }
-//            }
-//        }
-//    }
-//
-//    private fun showExportSuccessMessage(pdfFile: File) {
-//        Toast.makeText(requireContext(), "PDF berhasil diekspor", Toast.LENGTH_SHORT).show()
-//        openPdfFile(pdfFile)
-//    }
-//
-//    private fun openPdfFile(pdfFile: File) {
-//        val uri = FileProvider.getUriForFile(requireContext(), "${BuildConfig.APPLICATION_ID}.provider", pdfFile)
-//        val intent = Intent(Intent.ACTION_VIEW).apply {
-//            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-//            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-//            setDataAndType(uri, "application/pdf")
-//        }
-//        startActivity(Intent.createChooser(intent, "Pilih aplikasi untuk membuka PDF"))
-//    }
+    private fun exportPdf() {
+        val userId = runBlocking { userPreferences.userIdFlow.first() }
+        userId?.let {
+            exportPdfViewModel.exportPdf(it).observe(viewLifecycleOwner) { result ->
+                when (result) {
+                    is Result.Loading -> {
+                        // Tampilkan indikator loading jika diperlukan
+                    }
+                    is Result.Success -> {
+                        val responseBody = result.data
+                        responseBody.let {
+                            val filePath = savePDFToFile(responseBody)
+                            filePath?.let { path ->
+                                openPDF(path)
+                            }
+                        }
+                    }
+                    is Result.Error -> {
+                        // Tangani error jika terjadi
+                    }
+                }
+            }
+        }
+    }
+
+    private fun savePDFToFile(body: ResponseBody): String? {
+        return try {
+            val filePath = "${Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)}/exported_pdf.pdf"
+            val file = File(filePath)
+            val outputStream = FileOutputStream(file)
+            outputStream.use {
+                it.write(body.bytes())
+            }
+            filePath
+        } catch (e: Exception) {
+            e.printStackTrace()
+            null
+        }
+    }
+
+    private fun openPDF(filePath: String) {
+        val file = File(filePath)
+        val uri = FileProvider.getUriForFile(
+            requireContext(),
+            "${requireContext().packageName}.fileprovider",
+            file
+        )
+        val intent = Intent(Intent.ACTION_VIEW).apply {
+            setDataAndType(uri, "application/pdf")
+            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        }
+        startActivity(intent)
+    }
+
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()

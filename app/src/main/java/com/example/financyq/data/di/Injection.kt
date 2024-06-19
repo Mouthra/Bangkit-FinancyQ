@@ -10,6 +10,7 @@ import com.example.financyq.data.repo.DeleteIncomeRepository
 import com.example.financyq.data.repo.DetailExpenditureRepository
 import com.example.financyq.data.repo.DetailIncomeRepository
 import com.example.financyq.data.repo.EduFinanceRepository
+import com.example.financyq.data.repo.ExportPdfRepository
 //import com.example.financyq.data.repo.ExportPdfRepository
 import com.example.financyq.data.repo.TotalExpenditureRepository
 import com.example.financyq.data.repo.TotalIncomeRepository
@@ -65,14 +66,14 @@ object Injection {
         val userPreferences = UserPreferences.getInstance(context)
         val tokenFlow = userPreferences.tokenFlow
         val apiService = ApiConfig.getApiService(tokenFlow)
-        return UpdateIncomeRepository.getInstance(apiService, userPreferences)
+        return UpdateIncomeRepository.getInstance(apiService)
     }
 
     fun provideUpdateExpenditureRepository(context: Context): UpdateExpenditureRepository {
         val userPreferences = UserPreferences.getInstance(context)
         val tokenFlow = userPreferences.tokenFlow
         val apiService = ApiConfig.getApiService(tokenFlow)
-        return UpdateExpenditureRepository.getInstance(apiService, userPreferences)
+        return UpdateExpenditureRepository.getInstance(apiService)
     }
 
     fun provideDeleteIncomeRepository(context: Context): DeleteIncomeRepository {
@@ -103,18 +104,18 @@ object Injection {
         return TotalExpenditureRepository.getInstance(apiService)
     }
 
-//    fun provideExportPdfRepository(context: Context): ExportPdfRepository {
-//        val userPreferences = UserPreferences.getInstance(context)
-//        val tokenFlow = userPreferences.tokenFlow
-//        val apiService = ApiConfig.getApiService(tokenFlow)
-//        return ExportPdfRepository.getInstance(apiService)
-//    }
+    fun provideExportPdfRepository(context: Context): ExportPdfRepository {
+        val userPreferences = UserPreferences.getInstance(context)
+        val tokenFlow = userPreferences.tokenFlow
+        val apiService = ApiConfig.getApiService(tokenFlow)
+        return ExportPdfRepository.getInstance(apiService)
+    }
 
     fun provideUsernameRepository(context: Context): UsernameRepository {
         val userPreferences = UserPreferences.getInstance(context)
         val tokenFlow = userPreferences.tokenFlow
         val apiService = ApiConfig.getApiService(tokenFlow)
-        return UsernameRepository.getInstance(apiService, userPreferences)
+        return UsernameRepository.getInstance(apiService)
     }
 
 

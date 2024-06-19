@@ -107,10 +107,10 @@ interface ApiService {
         @Path("idUser") idUser: String,
     ): Response<TotalResponse>
 
-//    @GET("api/transactions/{idUser}/export-pdf")
-//    suspend fun exportPDF(
-//        @Path("idUser") idUser: String
-//    ): Response<ResponseBody>
+    @GET("api/transactions/{idUser}/export-pdf")
+    suspend fun exportPDF(
+        @Path("idUser") idUser: String
+    ): Response<ResponseBody>
 
     @GET("/users/{username}")
     suspend fun getUsername(

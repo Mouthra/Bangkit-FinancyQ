@@ -11,7 +11,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiConfig {
-//    fun getApiService() {
         fun getApiService(tokenFlow: Flow<String?>): ApiService {
             val loggingInterceptor =
                 if (BuildConfig.DEBUG) {
@@ -39,5 +38,4 @@ object ApiConfig {
 
             return retrofit.create(ApiService::class.java)
         }
-//    }
 }

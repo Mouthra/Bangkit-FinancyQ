@@ -1,7 +1,6 @@
 package com.example.financyq.ui.details
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
@@ -72,23 +71,23 @@ class DetailsIncomeActivity : AppCompatActivity() {
             viewModel.getDetailIncome(idUser).observe(this) { result ->
                 when (result) {
                     is Result.Loading -> {
-                        Log.d("DetailsIncomeActivity", "Loading data...")
+//                        Log.d("DetailsIncomeActivity", "Loading data...")
                     }
                     is Result.Success -> {
                         result.data.transactions?.let {
                             val sortedTransactions =
                                 it.sortedByDescending { transaction -> transaction?.tanggal }
                             adapter.submitList(sortedTransactions)
-                            Log.d("DetailsIncomeActivity", "Data loaded successfully")
+//                            Log.d("DetailsIncomeActivity", "Data loaded successfully")
                         }
                     }
                     is Result.Error -> {
-                        Log.e("DetailsIncomeActivity", "Error loading data: ${result.error}")
+//                        Log.e("DetailsIncomeActivity", "Error loading data: ${result.error}")
                     }
                 }
             }
         } else {
-            Log.e("DetailsIncomeActivity", "User ID is not available")
+//            Log.e("DetailsIncomeActivity", "User ID is not available")
         }
     }
 
@@ -120,10 +119,10 @@ class DetailsIncomeActivity : AppCompatActivity() {
                                 is Result.Success -> {
                                     dialog.dismiss()
                                     observeViewModel()
-                                    Log.d("DetailsIncomeActivity", result.data.message ?: "Transaction removed")
+//                                    Log.d("DetailsIncomeActivity", result.data.message ?: "Transaction removed")
                                 }
                                 is Result.Error -> {
-                                    Log.e("DetailsIncomeActivity", "Error deleting income: ${result.error}")
+//                                    Log.e("DetailsIncomeActivity", "Error deleting income: ${result.error}")
                                 }
                             }
                         }
@@ -139,9 +138,9 @@ class DetailsIncomeActivity : AppCompatActivity() {
 
         bindingSheet.btnSave.setOnClickListener {
             AlertDialog.Builder(this).apply {
-                setTitle("Konfirmasi Simpan")
-                setMessage("Apakah Anda yakin dengan perubahan ini?")
-                setPositiveButton("Ya") { _, _ ->
+                setTitle("Confirmation")
+                setMessage("Are you sure about this change?")
+                setPositiveButton("Yes") { _, _ ->
                     val updateIncomeRequest = UpdateIncomeRequest(
                         jumlah = bindingSheet.EditTotalIncome.text.toString().replace("[Rp.]".toRegex(), "").toInt(),
                         sumber = bindingSheet.EditSource.text.toString(),
@@ -153,29 +152,27 @@ class DetailsIncomeActivity : AppCompatActivity() {
                         updateViewModel.updateIncome(it1, updateIncomeRequest).observe(this@DetailsIncomeActivity) { result ->
                             when (result) {
                                 is Result.Loading -> {
-                                    // Tampilkan indikator loading
+
                                 }
                                 is Result.Success -> {
-                                    // Tangani sukses
+
                                     dialog.dismiss()
                                     observeViewModel()
                                 }
                                 is Result.Error -> {
-                                    // Tangani error
-                                    Log.e("DetailsIncomeActivity", "Error updating income: ${result.error}")
+//                                    Log.e("DetailsIncomeActivity", "Error updating income: ${result.error}")
                                 }
                             }
                         }
                     }
                 }
-                setNegativeButton("Tidak") { dialogInterface, _ ->
+                setNegativeButton("No") { dialogInterface, _ ->
                     dialogInterface.dismiss()
                 }
                 setCancelable(false)
                 show()
             }
         }
-
         dialog.show()
     }
 }
