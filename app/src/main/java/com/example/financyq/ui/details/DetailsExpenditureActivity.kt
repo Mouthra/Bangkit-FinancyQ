@@ -1,12 +1,13 @@
 package com.example.financyq.ui.details
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.financyq.R
 import com.example.financyq.data.di.Result
 import com.example.financyq.data.di.ViewModelFactory
 import com.example.financyq.data.local.UserPreferences
@@ -72,24 +73,30 @@ class DetailsExpenditureActivity : AppCompatActivity() {
             viewModel.getDetailExpenditure(idUser).observe(this) { result ->
                 when (result) {
                     is Result.Loading -> {
-//                        Log.d("DetailsExpenditureActivity", "Loading data...")
+
                     }
                     is Result.Success -> {
                         result.data.transactions?.let {
-                            val sortedTransactions =
-                                it.sortedByDescending { transaction -> transaction?.tanggal }
-                            adapter.submitList(sortedTransactions)
-//                            Log.d("DetailsExpenditureActivity", "Data loaded successfully")
-                        }
+                            if (it.isNotEmpty()) {
+                                val sortedTransactions =
+                                    it.sortedByDescending { transaction -> transaction?.tanggal }
+                                adapter.submitList(sortedTransactions)
+                            } else {
+                                showDataNotFoundMessage()
+                            }
+                        } ?: showDataNotFoundMessage()
                     }
                     is Result.Error -> {
-//                        Log.e("DetailsExpenditureActivity", "Error loading data: ${result.error}")
+
                     }
                 }
             }
-        } else {
-            Log.e("DetailsExpenditureActivity", "User ID is not available")
         }
+    }
+
+    private fun showDataNotFoundMessage() {
+        binding.tvEmptyMessage.visibility = View.VISIBLE
+        binding.rvDetailExpenditure.visibility = View.GONE
     }
 
     private fun showBottomSheetDialog(item: TransactionsItem) {
@@ -108,9 +115,9 @@ class DetailsExpenditureActivity : AppCompatActivity() {
 
         bindingSheet.btnDelete.setOnClickListener {
             AlertDialog.Builder(this).apply {
-                setTitle("Konfirmasi Hapus")
-                setMessage("Apakah Anda yakin ingin menghapusnya?")
-                setPositiveButton("Ya") { _, _ ->
+                setTitle(R.string.confirm)
+                setMessage(R.string.are_you_sure_want_to_delete_it)
+                setPositiveButton(R.string.yes) { _, _ ->
                     item.idTransaksi?.let { idTransaksi ->
                         deleteViewModel.deleteExpenditure(idTransaksi).observe(this@DetailsExpenditureActivity) { result ->
                             when (result) {
@@ -120,16 +127,15 @@ class DetailsExpenditureActivity : AppCompatActivity() {
                                 is Result.Success -> {
                                     dialog.dismiss()
                                     observeViewModel()
-//                                    Log.d("DetailsExpenditureActivity", result.data.message ?: "Transaction removed")
                                 }
                                 is Result.Error -> {
-//                                    Log.e("DetailsExpenditureActivity", "Error deleting expenditure: ${result.error}")
+
                                 }
                             }
                         }
                     }
                 }
-                setNegativeButton("Tidak") { dialogInterface, _ ->
+                setNegativeButton(R.string.no) { dialogInterface, _ ->
                     dialogInterface.dismiss()
                 }
                 setCancelable(false)
@@ -139,9 +145,9 @@ class DetailsExpenditureActivity : AppCompatActivity() {
 
         bindingSheet.btnSave.setOnClickListener {
             AlertDialog.Builder(this).apply {
-                setTitle("Confirmation")
-                setMessage("Are you sure about this change")
-                setPositiveButton("Ya") { _, _ ->
+                setTitle(R.string.confirm)
+                setMessage(R.string.are_you_sure_about_this_change)
+                setPositiveButton(R.string.yes) { _, _ ->
                     val updateExpenditureRequest = UpdateExpenditureRequest(
                         jumlah = bindingSheet.EditTotalExpenditure.text.toString().replace("[Rp.]".toRegex(), "").toInt(),
                         sumber = bindingSheet.EditSource.text.toString(),
@@ -153,22 +159,20 @@ class DetailsExpenditureActivity : AppCompatActivity() {
                         updateViewModel.updateExpenditure(it1, updateExpenditureRequest).observe(this@DetailsExpenditureActivity) { result ->
                             when (result) {
                                 is Result.Loading -> {
-                                    // Tampilkan indikator loading
+
                                 }
                                 is Result.Success -> {
-                                    // Tangani sukses
                                     dialog.dismiss()
                                     observeViewModel()
                                 }
                                 is Result.Error -> {
-                                    // Tangani error
-//                                    Log.e("DetailsExpenditureActivity", "Error updating expenditure: ${result.error}")
+
                                 }
                             }
                         }
                     }
                 }
-                setNegativeButton("Tidak") { dialogInterface, _ ->
+                setNegativeButton(R.string.no) { dialogInterface, _ ->
                     dialogInterface.dismiss()
                 }
                 setCancelable(false)

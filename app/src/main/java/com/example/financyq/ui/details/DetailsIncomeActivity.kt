@@ -2,10 +2,12 @@ package com.example.financyq.ui.details
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.financyq.R
 import com.example.financyq.data.di.Result
 import com.example.financyq.data.di.ViewModelFactory
 import com.example.financyq.data.local.UserPreferences
@@ -71,24 +73,30 @@ class DetailsIncomeActivity : AppCompatActivity() {
             viewModel.getDetailIncome(idUser).observe(this) { result ->
                 when (result) {
                     is Result.Loading -> {
-//                        Log.d("DetailsIncomeActivity", "Loading data...")
+
                     }
                     is Result.Success -> {
                         result.data.transactions?.let {
-                            val sortedTransactions =
-                                it.sortedByDescending { transaction -> transaction?.tanggal }
-                            adapter.submitList(sortedTransactions)
-//                            Log.d("DetailsIncomeActivity", "Data loaded successfully")
-                        }
+                            if (it.isNotEmpty()) {
+                                val sortedTransactions =
+                                    it.sortedByDescending { transaction -> transaction?.tanggal }
+                                adapter.submitList(sortedTransactions)
+                            } else {
+                                showDataNotFoundMessage()
+                            }
+                        } ?: showDataNotFoundMessage()
                     }
                     is Result.Error -> {
-//                        Log.e("DetailsIncomeActivity", "Error loading data: ${result.error}")
+
                     }
                 }
             }
-        } else {
-//            Log.e("DetailsIncomeActivity", "User ID is not available")
         }
+    }
+
+    private fun showDataNotFoundMessage() {
+        binding.tvEmptyMessage.visibility = View.VISIBLE
+        binding.rvDetailIncome.visibility = View.GONE
     }
 
     private fun showBottomSheetDialog(item: TransactionsItem) {
@@ -107,28 +115,27 @@ class DetailsIncomeActivity : AppCompatActivity() {
 
         bindingSheet.btnDelete.setOnClickListener {
             AlertDialog.Builder(this).apply {
-                setTitle("Konfirmasi Hapus")
-                setMessage("Apakah Anda yakin ingin menghapusnya?")
-                setPositiveButton("Ya") { _, _ ->
+                setTitle(R.string.confirm)
+                setMessage(R.string.are_you_sure_want_to_delete_it)
+                setPositiveButton(R.string.yes) { _, _ ->
                     item.idTransaksi?.let { idTransaksi ->
                         deleteViewModel.deleteIncome(idTransaksi).observe(this@DetailsIncomeActivity) { result ->
                             when (result) {
                                 is Result.Loading -> {
-                                    // Tampilkan indikator loading jika diperlukan
+
                                 }
                                 is Result.Success -> {
                                     dialog.dismiss()
                                     observeViewModel()
-//                                    Log.d("DetailsIncomeActivity", result.data.message ?: "Transaction removed")
                                 }
                                 is Result.Error -> {
-//                                    Log.e("DetailsIncomeActivity", "Error deleting income: ${result.error}")
+
                                 }
                             }
                         }
                     }
                 }
-                setNegativeButton("Tidak") { dialogInterface, _ ->
+                setNegativeButton(R.string.no) { dialogInterface, _ ->
                     dialogInterface.dismiss()
                 }
                 setCancelable(false)
@@ -138,9 +145,9 @@ class DetailsIncomeActivity : AppCompatActivity() {
 
         bindingSheet.btnSave.setOnClickListener {
             AlertDialog.Builder(this).apply {
-                setTitle("Confirmation")
-                setMessage("Are you sure about this change?")
-                setPositiveButton("Yes") { _, _ ->
+                setTitle(R.string.confirm)
+                setMessage(R.string.are_you_sure_about_this_change)
+                setPositiveButton(R.string.yes) { _, _ ->
                     val updateIncomeRequest = UpdateIncomeRequest(
                         jumlah = bindingSheet.EditTotalIncome.text.toString().replace("[Rp.]".toRegex(), "").toInt(),
                         sumber = bindingSheet.EditSource.text.toString(),
@@ -160,13 +167,13 @@ class DetailsIncomeActivity : AppCompatActivity() {
                                     observeViewModel()
                                 }
                                 is Result.Error -> {
-//                                    Log.e("DetailsIncomeActivity", "Error updating income: ${result.error}")
+
                                 }
                             }
                         }
                     }
                 }
-                setNegativeButton("No") { dialogInterface, _ ->
+                setNegativeButton(R.string.no) { dialogInterface, _ ->
                     dialogInterface.dismiss()
                 }
                 setCancelable(false)

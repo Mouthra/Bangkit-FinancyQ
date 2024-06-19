@@ -25,7 +25,6 @@ class EduFinanceAdapter : RecyclerView.Adapter<EduFinanceAdapter.EduFinanceViewH
     }
 
     override fun onBindViewHolder(holder: EduFinanceViewHolder, position: Int) {
-        Log.e("fikry6", "onBindViewHolder: ${items[position].imageUrl}")
         holder.bind(items[position])
     }
 

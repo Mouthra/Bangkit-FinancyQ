@@ -2,7 +2,6 @@ package com.example.financyq.ui.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.financyq.R
 import com.example.financyq.data.di.Result
 import com.example.financyq.data.di.ViewModelFactory
 import com.example.financyq.data.local.UserPreferences
@@ -74,7 +74,7 @@ class HomeFragment : Fragment() {
             usernameViewModel.getUsername(username).observe(viewLifecycleOwner) { result ->
                 when (result) {
                     is Result.Loading -> {
-                        // Show loading indicator if needed
+
                     }
                     is Result.Success -> {
                         binding.tvUsername.text = result.data.username
@@ -85,7 +85,7 @@ class HomeFragment : Fragment() {
                 }
             }
         } else {
-            Toast.makeText(requireContext(), "ID Pengguna tidak tersedia", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), R.string.id_user_not_found, Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -103,7 +103,6 @@ class HomeFragment : Fragment() {
                 is Result.Success -> {
                     binding.progressBar.visibility = View.GONE
                     shortcutAdapter.submitList(result.data)
-                    Log.e("fikry", "setObserver: ${result.data}")
                 }
                 is Result.Error -> {
                     binding.progressBar.visibility = View.GONE
@@ -159,7 +158,7 @@ class HomeFragment : Fragment() {
             totalExpenditureViewModel.getTotalExpenditure(it).observe(viewLifecycleOwner) { result ->
                 when (result) {
                     is Result.Loading -> {
-                        // Tampilkan indikator loading jika diperlukan
+
                     }
 
                     is Result.Success -> {

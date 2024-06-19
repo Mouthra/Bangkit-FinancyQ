@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.example.financyq.R
 import com.example.financyq.data.di.Result
 import com.example.financyq.data.di.ViewModelFactory
 import com.example.financyq.data.local.UserPreferences
@@ -42,7 +43,6 @@ class UserActivity : AppCompatActivity() {
                     is Result.Success -> {
                         binding.nameEditText.setText(result.data.username)
                         binding.emailEditText.setText(result.data.email)
-                        binding.passwordEditText.setText(result.data.password)
                     }
 
                     is Result.Error -> {
@@ -51,7 +51,7 @@ class UserActivity : AppCompatActivity() {
                 }
             }
         } else {
-            Toast.makeText(this, "Username not found", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.username_not_found, Toast.LENGTH_SHORT).show()
         }
     }
 

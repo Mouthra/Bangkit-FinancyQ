@@ -116,4 +116,9 @@ interface ApiService {
     suspend fun getUsername(
         @Path("username") username: String,
     ): Response<UsernameResponse>
+
+    @GET("api/transactions/classify")
+    suspend fun addImage(
+
+    )
 }

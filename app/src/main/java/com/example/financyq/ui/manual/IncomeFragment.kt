@@ -71,7 +71,7 @@ class IncomeFragment : Fragment() {
                             is Result.Error -> {
                                 Toast.makeText(
                                     requireContext(),
-                                    "Gagal menambah pemasukan",
+                                    R.string.failed_to_add_income,
                                     Toast.LENGTH_SHORT
                                 ).show()
                             }
@@ -80,21 +80,21 @@ class IncomeFragment : Fragment() {
                 } else {
                     Toast.makeText(
                         requireContext(),
-                        "ID Pengguna tidak tersedia",
+                        R.string.id_user_not_found,
                         Toast.LENGTH_SHORT
                     ).show()
                 }
             } else {
-                Toast.makeText(requireContext(), "Harap isi semua kolom", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), R.string.please_fill_in_all_columns, Toast.LENGTH_SHORT).show()
             }
         }
     }
 
     private fun showSuccessDialogAndNavigate() {
         AlertDialog.Builder(requireContext())
-            .setTitle("Selamat")
-            .setMessage("Data pemasukan berhasil disimpan")
-            .setPositiveButton("OK") { dialog, _ ->
+            .setTitle(R.string.congratulations)
+            .setMessage(R.string.input_data_income)
+            .setPositiveButton(R.string.ok) { dialog, _ ->
                 dialog.dismiss()
                 clearEditTextFields(
                     binding.CategoryEditText,

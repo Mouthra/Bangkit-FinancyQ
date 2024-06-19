@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.financyq.R
 import com.example.financyq.data.di.Result
 import com.example.financyq.data.di.ViewModelFactory
 import com.example.financyq.data.request.OtpRequest
@@ -47,9 +48,9 @@ class OtpActivity : AppCompatActivity() {
             when (result) {
                 is Result.Success -> {
                     AlertDialog.Builder(this).apply {
-                        setTitle("Resend Success")
-                        setMessage("OTP has been resent successfully.")
-                        setPositiveButton("OK") { dialog, _ ->
+                        setTitle(R.string.resend_success)
+                        setMessage(R.string.otp_has_been_resent_successfully)
+                        setPositiveButton(R.string.ok) { dialog, _ ->
                             dialog.dismiss()
                         }
                         setCancelable(false)
@@ -58,7 +59,7 @@ class OtpActivity : AppCompatActivity() {
                     }
                 }
                 is Result.Loading -> {
-                    // Show loading indicator if needed
+
                 }
                 is Result.Error -> {
                     Toast.makeText(this, result.error, Toast.LENGTH_SHORT).show()
@@ -74,16 +75,16 @@ class OtpActivity : AppCompatActivity() {
             val otp = binding.OtpEditText.text.toString()
 
             if (otp.isEmpty()) {
-                Toast.makeText(this, "OTP is empty", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.otp_is_empty, Toast.LENGTH_SHORT).show()
             } else {
                 val otpRequest = OtpRequest(email = email, otp = otp)
                 otpViewModel.verifyOtp(otpRequest).observe(this) { result ->
                     when (result) {
                         is Result.Success -> {
                             AlertDialog.Builder(this).apply {
-                                setTitle("Verification successful")
-                                setMessage("OTP verification was successful.")
-                                setPositiveButton("OK") { dialog, _ ->
+                                setTitle(R.string.verification_successfull)
+                                setMessage(R.string.otp_verification_was_successfull)
+                                setPositiveButton(R.string.ok) { dialog, _ ->
                                     dialog.dismiss()
                                     startActivity(Intent(this@OtpActivity, LoginActivity::class.java))
                                     finish()
@@ -94,7 +95,7 @@ class OtpActivity : AppCompatActivity() {
                             }
                         }
                         is Result.Loading -> {
-                            // Show loading indicator if needed
+
                         }
                         is Result.Error -> {
                             Toast.makeText(this, result.error, Toast.LENGTH_SHORT).show()

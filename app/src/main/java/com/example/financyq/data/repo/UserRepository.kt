@@ -22,33 +22,40 @@ import retrofit2.HttpException
 
 class UserRepository(private val apiService: ApiService, private val userPreferences: UserPreferences) {
 
-    fun register(signupRequest: SignupRequest): LiveData<Result<SignUpResponse>> =
-        liveData {
-            emit(Result.Loading)
-            try {
-                val response = apiService.register(signupRequest)
-                if (response.isSuccessful) {
-                    val responseBody = response.body()
-                    if (responseBody != null) {
-                        if (responseBody.success == true) {
-                            emit(Result.Success(responseBody))
-                        } else {
-                            emit(Result.Error(responseBody.message ?: "Unknown error"))
-                        }
+    fun register(signupRequest: SignupRequest): LiveData<Result<SignUpResponse>> = liveData {
+        emit(Result.Loading)
+        try {
+            val response = apiService.register(signupRequest)
+            if (response.isSuccessful) {
+                val responseBody = response.body()
+                if (responseBody != null) {
+                    if (responseBody.success == true) {
+                        emit(Result.Success(responseBody))
                     } else {
-                        emit(Result.Error("Response body is null"))
+                        emit(Result.Error(responseBody.message ?: "Unknown error"))
                     }
                 } else {
-                    emit(Result.Error("Unsuccessful response"))
+                    emit(Result.Error("Response body is null"))
                 }
-            } catch (e: HttpException) {
-                val errorBody = e.response()?.errorBody()?.string()
-                val errorResponse = Gson().fromJson(errorBody, SignUpResponse::class.java)
-                emit(Result.Error(errorResponse.message ?: "Uknown Error"))
-            } catch (e: Exception) {
-                emit(Result.Error(e.message ?: "Expected occurred"))
+            } else {
+                val errorBody = response.errorBody()?.string()
+                val errorMessage = if (response.code() == 400 && errorBody != null) {
+                    val json = JSONObject(errorBody)
+                    json.optString("message", "Username or email already exists")
+                } else {
+                    "Unsuccessful response"
+                }
+                emit(Result.Error(errorMessage))
             }
+        } catch (e: HttpException) {
+            val errorBody = e.response()?.errorBody()?.string()
+            val errorResponse = Gson().fromJson(errorBody, SignUpResponse::class.java)
+            emit(Result.Error(errorResponse.message ?: "Unknown error"))
+        } catch (e: Exception) {
+            emit(Result.Error(e.message ?: "An unexpected error occurred"))
         }
+    }
+
 
     fun verifyOtp(otpRequest: OtpRequest): LiveData<Result<OtpResponse>> =
         liveData {

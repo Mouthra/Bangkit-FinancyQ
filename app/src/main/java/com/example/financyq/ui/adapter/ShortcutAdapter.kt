@@ -22,7 +22,6 @@ class ShortcutAdapter : ListAdapter<EduFinanceResponse, ShortcutAdapter.EduFinan
     override fun onBindViewHolder(holder: EduFinanceViewHolder, position: Int) {
         val item = getItem(position)
         holder.bind(item)
-        Log.e("fikry3", "onBindViewHolder: ${item.imageUrl}")
     }
 
     class EduFinanceViewHolder(private val binding: ItemListHomeBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -32,7 +31,6 @@ class ShortcutAdapter : ListAdapter<EduFinanceResponse, ShortcutAdapter.EduFinan
                 .load(item.imageUrl)
                 .into(binding.imgEducation)
                 .clearOnDetach()
-//            Log.e("fikry4", "bind: ${item.imageUrl}")
 
             itemView.setOnClickListener {
                 val intent = Intent(itemView.context, DetailEduFinanceActivity::class.java).apply {

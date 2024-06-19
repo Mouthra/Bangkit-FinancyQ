@@ -22,7 +22,6 @@ class DetailsIncomeAdapter(private val onItemClick: (TransactionsItem) -> Unit) 
     override fun onBindViewHolder(holder: DetailIncomeViewHolder, position: Int) {
         val item = getItem(position)
         holder.bind(item)
-        Log.e("fikry12", "onBindViewHolder: ${item.deskripsi}")
     }
 
     class DetailIncomeViewHolder(private val binding: ItemListDetailsincomeBinding, private val onItemClick: (TransactionsItem) -> Unit) : RecyclerView.ViewHolder(binding.root) {
@@ -32,7 +31,6 @@ class DetailsIncomeAdapter(private val onItemClick: (TransactionsItem) -> Unit) 
             binding.tvDeskripsi.text = item.deskripsi
             binding.tvJumlah.text = formatToRupiah(item.jumlah ?: 0)
             binding.tvSumber.text = item.sumber
-            Log.e("fikry13", "bind: ${item.deskripsi}")
 
             itemView.setOnClickListener {
                 onItemClick(item)
@@ -55,13 +53,13 @@ class DetailsIncomeAdapter(private val onItemClick: (TransactionsItem) -> Unit) 
                     if (date != null) {
                         outputFormat.format(date)
                     } else {
-                        "Tanggal Tidak Diketahui"
+                        "Date not found"
                     }
                 } catch (e: Exception) {
-                    "Tanggal Tidak Valid"
+                    "Date not valid"
                 }
             } else {
-                "Tanggal Tidak Diketahui"
+                "Date not found"
             }
         }
 

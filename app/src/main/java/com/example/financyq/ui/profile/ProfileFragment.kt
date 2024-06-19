@@ -80,7 +80,7 @@ class ProfileFragment : Fragment() {
                 }
             }
         } else {
-            Toast.makeText(requireContext(), "ID Pengguna tidak tersedia", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), R.string.id_user_not_found, Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -133,6 +133,7 @@ class ProfileFragment : Fragment() {
                             userPreferences.clearUserId()
                             userPreferences.clearIdtransactionexpenditure()
                             userPreferences.clearIdtansactionincome()
+                            userPreferences.clearUsername()
 
                             withContext(Dispatchers.Main) {
                                 Toast.makeText(requireActivity(), result.data.message, Toast.LENGTH_SHORT).show()

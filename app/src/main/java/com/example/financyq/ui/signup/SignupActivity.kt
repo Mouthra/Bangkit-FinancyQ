@@ -30,9 +30,9 @@ class SignupActivity : AppCompatActivity() {
 
     private fun setupAction() {
         binding.signupButton.setOnClickListener {
-            val username = binding.nameEditText.text.toString()
-            val email = binding.emailEditText.text.toString()
-            val password = binding.passwordEditText.text.toString()
+            val username = binding.nameEditText.text.toString().trim()
+            val email = binding.emailEditText.text.toString().trim()
+            val password = binding.passwordEditText.text.toString().trim()
 
             if (username.isEmpty() || email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "Data Still Empty", Toast.LENGTH_SHORT).show()
@@ -40,6 +40,10 @@ class SignupActivity : AppCompatActivity() {
                 val signupRequest = SignupRequest(username, email, password)
                 signUpViewModel.register(signupRequest).observe(this) { result ->
                     when (result) {
+                        is Result.Loading -> {
+                            // Show a loading indicator if needed
+                        }
+
                         is Result.Success -> {
                             AlertDialog.Builder(this).apply {
                                 setTitle(R.string.title_set)
@@ -59,15 +63,24 @@ class SignupActivity : AppCompatActivity() {
                             }
                         }
 
-                        is Result.Loading -> {
-                        }
-
                         is Result.Error -> {
-                            Toast.makeText(this, result.error, Toast.LENGTH_SHORT).show()
+                            val errorMessage = result.error
+                            when {
+                                errorMessage.contains("Username or email already exists") -> {
+                                    Toast.makeText(this, R.string.username_or_email_already_exists, Toast.LENGTH_SHORT).show()
+                                }
+                                errorMessage.contains("Invalid email format") -> {
+                                    Toast.makeText(this, R.string.invalid_email_format, Toast.LENGTH_SHORT).show()
+                                }
+                                else -> {
+                                    Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
+                                }
+                            }
                         }
                     }
                 }
             }
         }
     }
+
 }

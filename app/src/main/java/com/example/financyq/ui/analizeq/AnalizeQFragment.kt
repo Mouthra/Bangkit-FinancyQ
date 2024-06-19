@@ -72,7 +72,7 @@ class AnalizeQFragment : Fragment() {
             totalIncomeViewModel.getTotalIncome(it).observe(viewLifecycleOwner) { result ->
                 when (result) {
                     is Result.Loading -> {
-                        // Tampilkan indikator loading jika diperlukan
+
                     }
 
                     is Result.Success -> {
@@ -81,7 +81,7 @@ class AnalizeQFragment : Fragment() {
                     }
 
                     is Result.Error -> {
-                        // Tangani error jika terjadi
+
                     }
                 }
             }
@@ -95,7 +95,7 @@ class AnalizeQFragment : Fragment() {
             totalExpenditureViewModel.getTotalExpenditure(it).observe(viewLifecycleOwner) { result ->
                 when (result) {
                     is Result.Loading -> {
-                        // Tampilkan indikator loading jika diperlukan
+
                     }
 
                     is Result.Success -> {
@@ -104,7 +104,7 @@ class AnalizeQFragment : Fragment() {
                     }
 
                     is Result.Error -> {
-                        // Tangani error jika terjadi
+
                     }
                 }
             }
@@ -153,7 +153,7 @@ class AnalizeQFragment : Fragment() {
             exportPdfViewModel.exportPdf(it).observe(viewLifecycleOwner) { result ->
                 when (result) {
                     is Result.Loading -> {
-                        // Tampilkan indikator loading jika diperlukan
+
                     }
                     is Result.Success -> {
                         val responseBody = result.data
@@ -165,7 +165,7 @@ class AnalizeQFragment : Fragment() {
                         }
                     }
                     is Result.Error -> {
-                        // Tangani error jika terjadi
+
                     }
                 }
             }
