@@ -20,7 +20,6 @@ class WelcomeActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setupAction()
     }
-
     private fun setupAction() {
         binding.loginButton.setOnClickListener{
             startActivity(Intent(this, LoginActivity::class.java))
