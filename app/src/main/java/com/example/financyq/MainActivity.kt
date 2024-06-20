@@ -1,6 +1,7 @@
 package com.example.financyq
 
 import android.os.Bundle
+
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -33,5 +34,4 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
     }
-//
 }

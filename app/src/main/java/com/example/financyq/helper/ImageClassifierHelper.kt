@@ -63,6 +63,7 @@ class ImageClassifierHelper(
             .build()
 
         val tensorImage = imageProcessor.process(TensorImage.fromBitmap(uriToBitmap(imageUri)))
+
         val imageProcessingOptions = ImageProcessingOptions.builder()
             .build()
         var inferenceTime = SystemClock.uptimeMillis()

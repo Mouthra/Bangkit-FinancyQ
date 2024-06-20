@@ -1,5 +1,6 @@
 package com.example.financyq.ui.adapter
 
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.financyq.data.response.EduFinanceResponse
 import com.example.financyq.databinding.ItemListEdufinanceBinding
+import com.example.financyq.ui.edufinance.DetailEduFinanceActivity
 
 class EduFinanceAdapter : RecyclerView.Adapter<EduFinanceAdapter.EduFinanceViewHolder>() {
 
@@ -23,7 +25,6 @@ class EduFinanceAdapter : RecyclerView.Adapter<EduFinanceAdapter.EduFinanceViewH
     }
 
     override fun onBindViewHolder(holder: EduFinanceViewHolder, position: Int) {
-        Log.e("fikry6", "onBindViewHolder: ${items[position].imageUrl}", )
         holder.bind(items[position])
     }
 
@@ -32,11 +33,23 @@ class EduFinanceAdapter : RecyclerView.Adapter<EduFinanceAdapter.EduFinanceViewH
     inner class EduFinanceViewHolder(private val binding: ItemListEdufinanceBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: EduFinanceResponse) {
             binding.tvTitle.text = item.title
-            binding.tvDescription.text = item.description
+            binding.tvContent.text = item.content
             Glide.with(binding.root)
                 .load(item.imageUrl)
                 .into(binding.imgEducation)
                 .clearOnDetach()
+
+            itemView.setOnClickListener {
+                val intent = Intent(itemView.context, DetailEduFinanceActivity::class.java).apply {
+                    putExtra(DetailEduFinanceActivity.EXTRA_TITLE, item.title)
+                    putExtra(DetailEduFinanceActivity.EXTRA_IMAGE_URL, item.imageUrl)
+                    putExtra(DetailEduFinanceActivity.EXTRA_DESCRIPTION, item.description)
+                    putExtra(DetailEduFinanceActivity.EXTRA_CREATED_AT, item.createdAt)
+                    putExtra(DetailEduFinanceActivity.EXTRA_SOURCE, item.source)
+                    putExtra(DetailEduFinanceActivity.EXTRA_CONTENT, item.content)
+                }
+                itemView.context.startActivity(intent)
+            }
         }
     }
 }

@@ -17,7 +17,7 @@ class SignupActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySignupBinding
     private val signUpViewModel by viewModels<SignUpViewModel> {
-        ViewModelFactory.getInstance()
+        ViewModelFactory.getInstance(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,9 +30,9 @@ class SignupActivity : AppCompatActivity() {
 
     private fun setupAction() {
         binding.signupButton.setOnClickListener {
-            val username = binding.nameEditText.text.toString()
-            val email = binding.emailEditText.text.toString()
-            val password = binding.passwordEditText.text.toString()
+            val username = binding.nameEditText.text.toString().trim()
+            val email = binding.emailEditText.text.toString().trim()
+            val password = binding.passwordEditText.text.toString().trim()
 
             if (username.isEmpty() || email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "Data Still Empty", Toast.LENGTH_SHORT).show()
@@ -40,31 +40,47 @@ class SignupActivity : AppCompatActivity() {
                 val signupRequest = SignupRequest(username, email, password)
                 signUpViewModel.register(signupRequest).observe(this) { result ->
                     when (result) {
+                        is Result.Loading -> {
+                            // Show a loading indicator if needed
+                        }
+
                         is Result.Success -> {
                             AlertDialog.Builder(this).apply {
                                 setTitle(R.string.title_set)
                                 setMessage(R.string.message_set)
                                 setPositiveButton(R.string.continue_set) { _, _ ->
-                                    val intent = Intent(context, OtpActivity::class.java)
-                                    intent.putExtra(OtpActivity.EXTRA_EMAIL, email)
+                                    val intent = Intent(context, OtpActivity::class.java).apply {
+                                        putExtra(OtpActivity.EXTRA_EMAIL, email)
+                                        putExtra(OtpActivity.EXTRA_USERNAME, username)
+                                        putExtra(OtpActivity.EXTRA_PASSWORD, password)
+                                    }
                                     startActivity(intent)
                                     finish()
                                 }
+                                setCancelable(false)
                                 create()
                                 show()
                             }
                         }
 
-                        is Result.Loading -> {
-                            // Tidak perlu tindakan khusus saat loading
-                        }
-
                         is Result.Error -> {
-                            Toast.makeText(this, result.error, Toast.LENGTH_SHORT).show()
+                            val errorMessage = result.error
+                            when {
+                                errorMessage.contains("Username or email already exists") -> {
+                                    Toast.makeText(this, R.string.username_or_email_already_exists, Toast.LENGTH_SHORT).show()
+                                }
+                                errorMessage.contains("Invalid email format") -> {
+                                    Toast.makeText(this, R.string.invalid_email_format, Toast.LENGTH_SHORT).show()
+                                }
+                                else -> {
+                                    Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
+                                }
+                            }
                         }
                     }
                 }
             }
         }
     }
+
 }

@@ -36,6 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="@string/example_category_expend"
             android:inputType="text"
             tools:ignore="SpeakableTextPresentCheck" />
 
@@ -55,7 +56,7 @@
         app:layout_constraintTop_toBottomOf="@+id/CategoryEditTextLayout" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/NameIncomeEditTextLayout"
+        android:id="@+id/NameExpenditureEditTextLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -66,11 +67,12 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_name_expenditure">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/NameIncomeEditText"
+            android:id="@+id/NameExpenditureEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPassword"
+            android:hint="@string/example_expenditure"
+            android:inputType="text"
             tools:ignore="SpeakableTextPresentCheck" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -86,10 +88,10 @@
         android:textStyle="bold"
         android:fontFamily="@font/poppins"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NameIncomeEditTextLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/NameExpenditureEditTextLayout" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/PriceEditTextLayout"
+        android:id="@+id/TotalExpenditureEditTextLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -99,17 +101,55 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_price">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/PriceEditText"
+        <com.example.financyq.ui.customView.EditTextRupiah
+            android:id="@+id/TotalExpenditureEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPassword"
+            android:hint="@string/example_price"
+            android:inputType="numberDecimal"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tv_source"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/source"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:fontFamily="@font/poppins"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TotalExpenditureEditTextLayout" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/SourceEditTextLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_source">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/SourceEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="none"
+            android:focusable="false"
             tools:ignore="SpeakableTextPresentCheck" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
+        android:id="@+id/save_expenditure"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -120,6 +160,6 @@
         android:fontFamily="@font/poppins_bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PriceEditTextLayout"/>
+        app:layout_constraintTop_toBottomOf="@+id/SourceEditTextLayout"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
