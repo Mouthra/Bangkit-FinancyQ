@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background">
 
-    <!-- Fixed Header Layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
         app:layout_anchorGravity="top">
 
-        <!-- ImageButton -->
         <ImageButton
             android:id="@+id/btn_back"
             android:layout_width="60dp"
@@ -26,7 +24,6 @@
             android:layout_marginTop="2dp"
             android:layout_marginStart="10dp"/>
 
-        <!-- TextView -->
         <TextView
             android:id="@+id/tv_aboutus"
             android:layout_width="wrap_content"
@@ -44,18 +41,17 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- Scrollable Content -->
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="80dp"> <!-- Adjust this margin to ensure the scroll starts below the fixed header -->
+        android:layout_marginTop="80dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp">
 
-            <!-- TextView -->
             <TextView
                 android:id="@+id/tv_description"
                 android:layout_width="0dp"
@@ -71,7 +67,6 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"/>
 
-            <!-- TextView -->
             <TextView
                 android:id="@+id/tv_machine_learning_team"
                 android:layout_width="0dp"
@@ -87,7 +82,6 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"/>
 
-            <!-- TextView -->
             <TextView
                 android:id="@+id/tv_machine_learning"
                 android:layout_width="0dp"
@@ -102,7 +96,6 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"/>
 
-            <!-- TextView -->
             <TextView
                 android:id="@+id/tv_cloud_computing_team"
                 android:layout_width="0dp"
@@ -118,7 +111,6 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"/>
 
-            <!-- TextView -->
             <TextView
                 android:id="@+id/tv_cloud_computing"
                 android:layout_width="0dp"
@@ -133,7 +125,6 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"/>
 
-            <!-- TextView -->
             <TextView
                 android:id="@+id/tv_mobile_development_team"
                 android:layout_width="0dp"
@@ -149,7 +140,6 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"/>
 
-            <!-- TextView -->
             <TextView
                 android:id="@+id/tv_mobile_development"
                 android:layout_width="0dp"
@@ -164,7 +154,6 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"/>
 
-            <!-- ImageView -->
             <ImageView
                 android:id="@+id/logo_bangkit"
                 android:layout_width="100dp"
@@ -176,7 +165,6 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_mobile_development"
                 android:layout_marginTop="16dp"/>
 
-            <!-- ImageView -->
             <ImageView
                 android:id="@+id/logo_kampus_merdeka"
                 android:layout_width="100dp"

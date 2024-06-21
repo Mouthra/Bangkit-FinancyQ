@@ -18,6 +18,10 @@ import com.example.financyq.ui.adapter.DetailsIncomeAdapter
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class DetailsIncomeActivity : AppCompatActivity() {
 
@@ -73,13 +77,14 @@ class DetailsIncomeActivity : AppCompatActivity() {
             viewModel.getDetailIncome(idUser).observe(this) { result ->
                 when (result) {
                     is Result.Loading -> {
-
+                        // Show loading indicator if needed
                     }
                     is Result.Success -> {
-                        result.data.transactions?.let {
+                        result.data.transactions?.let { it ->
                             if (it.isNotEmpty()) {
-                                val sortedTransactions =
-                                    it.sortedByDescending { transaction -> transaction?.tanggal }
+                                val sortedTransactions = it.sortedByDescending { transaction ->
+                                    transaction?.tanggal?.let { parseDate(it) }
+                                }
                                 adapter.submitList(sortedTransactions)
                             } else {
                                 showDataNotFoundMessage()
@@ -91,6 +96,16 @@ class DetailsIncomeActivity : AppCompatActivity() {
                     }
                 }
             }
+        }
+    }
+
+    private fun parseDate(dateString: String): Date? {
+        val format = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault()) // Sesuaikan format dengan format tanggal Anda
+        return try {
+            format.parse(dateString)
+        } catch (e: ParseException) {
+            e.printStackTrace()
+            null
         }
     }
 

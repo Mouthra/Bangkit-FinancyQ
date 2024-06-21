@@ -15,9 +15,7 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-//        buildConfigField("String", "BASE_URL", "\"https://financyq-app.web.app/\"")
-//        buildConfigField("String", "BASE_URL", "\"http://localhost:3000/\"")
-        buildConfigField("String", "BASE_URL", "\"https://financyq-api-cookie-xhmxz47wja-et.a.run.app/\"")
+        buildConfigField("String", "BASE_URL", "\"https://financyq-api-app.web.app\"")
 
     }
 
@@ -69,5 +67,7 @@ dependencies {
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.glide)
+    implementation(libs.androidx.exifinterface)
+    implementation (libs.android.image.cropper)
 
 }

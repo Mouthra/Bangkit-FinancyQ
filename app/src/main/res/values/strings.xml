@@ -135,11 +135,10 @@
     <string name="confirm">Confirm</string>
     <string name="are_you_sure_want_to_delete_it">Are you sure want to delete it?</string>
     <string name="are_you_sure_about_this_change">Are you sure about this change?</string>
-
-    <!--    hapus aja ini ais-->
-    <string-array name="welcome_texts">
-        <item>Welcome to FinancyQ!</item>
-        <item>Empower yourself with our intuitive tools and educational resources designed to enhance your financial literacy. Transform your financial habits for a brighter future.</item>
-        <item>Start your journey with FinancyQ today!</item>
-    </string-array>
+    <string name="results">Results</string>
+    <string name="receipt">Receipt data check</string>
+    <string name="empty_image_warning">Please select image first</string>
+    <string name="foto_text">Photo</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
 </resources>

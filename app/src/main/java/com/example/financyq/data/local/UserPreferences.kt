@@ -81,21 +81,12 @@ class UserPreferences(context: Context) {
         preferences[USER_ID_KEY]
     }
 
-    val idTransactionIncomeFlow: Flow<String?> = dataStore.data.map { preferences ->
-        preferences[ID_TRANSACTION_INCOME_KEY]
-    }
-
-    val idTransactionExpenditureFlow: Flow<String?> = dataStore.data.map { preferences ->
-        preferences[ID_TRANSACTION_EXPENDITURE_KEY]
-    }
 
     val userNameFlow: Flow<String?> = dataStore.data.map { preferences ->
         preferences[USERNAME_KEY]
     }
 
-    val emailFlow: Flow<String?> = dataStore.data.map { preferences ->
-        preferences[EMAIL_KEY]
-    }
+
 
     companion object{
         private val TOKEN_KEY = stringPreferencesKey("refreshToken")
@@ -103,8 +94,6 @@ class UserPreferences(context: Context) {
         private val ID_TRANSACTION_INCOME_KEY = stringPreferencesKey("idTransaksiPemasukan")
         private val ID_TRANSACTION_EXPENDITURE_KEY = stringPreferencesKey("idTransaksiPengeluaran")
         private val USERNAME_KEY = stringPreferencesKey("username")
-        private val EMAIL_KEY = stringPreferencesKey("email")
-        private val PASSWORD_KEY = stringPreferencesKey("password")
 
         @Volatile
         private var INSTANCE: UserPreferences? = null

@@ -11,6 +11,7 @@ import com.example.financyq.data.repo.DetailExpenditureRepository
 import com.example.financyq.data.repo.DetailIncomeRepository
 import com.example.financyq.data.repo.EduFinanceRepository
 import com.example.financyq.data.repo.ExportPdfRepository
+import com.example.financyq.data.repo.PostImageRepository
 //import com.example.financyq.data.repo.ExportPdfRepository
 import com.example.financyq.data.repo.TotalExpenditureRepository
 import com.example.financyq.data.repo.TotalIncomeRepository
@@ -33,6 +34,7 @@ import com.example.financyq.ui.login.LoginViewModel
 import com.example.financyq.ui.manual.AddExpenditureViewModel
 import com.example.financyq.ui.manual.AddIncomeViewModel
 import com.example.financyq.ui.otp.OtpViewModel
+import com.example.financyq.ui.photo.PostImageViewModel
 import com.example.financyq.ui.profile.LogoutViewModel
 import com.example.financyq.ui.profile.UsernameViewModel
 import com.example.financyq.ui.signup.SignUpViewModel
@@ -51,7 +53,8 @@ class ViewModelFactory(
     private val totalIncomeRepository: TotalIncomeRepository,
     private val totalExpenditureRepository: TotalExpenditureRepository,
     private val usernameRepository: UsernameRepository,
-    private val exportPdfRepository: ExportPdfRepository
+    private val exportPdfRepository: ExportPdfRepository,
+    private val postImageRepository: PostImageRepository
 ): ViewModelProvider.NewInstanceFactory() {
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -107,6 +110,9 @@ class ViewModelFactory(
             modelClass.isAssignableFrom(UsernameViewModel::class.java) -> {
                 UsernameViewModel(usernameRepository) as T
             }
+            modelClass.isAssignableFrom(PostImageViewModel::class.java) -> {
+                PostImageViewModel(postImageRepository) as T
+            }
             else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
         }
     }
@@ -131,6 +137,7 @@ class ViewModelFactory(
             val totalExpenditureRepository = Injection.provideTotalExpenditureRepository(context)
             val exportPdfRepository = Injection.provideExportPdfRepository(context)
             val usernameRepository = Injection.provideUsernameRepository(context)
+            val postImageRepository = Injection.providePostImageRepository(context)
 
             return INSTANCE ?: synchronized(ViewModelFactory::class.java) {
                 INSTANCE ?: ViewModelFactory(
@@ -147,7 +154,8 @@ class ViewModelFactory(
                     totalIncomeRepository,
                     totalExpenditureRepository,
                     usernameRepository,
-                    exportPdfRepository)
+                    exportPdfRepository,
+                    postImageRepository)
                     .also { INSTANCE = it }
             }
         }

@@ -11,6 +11,7 @@ import com.example.financyq.data.repo.DetailExpenditureRepository
 import com.example.financyq.data.repo.DetailIncomeRepository
 import com.example.financyq.data.repo.EduFinanceRepository
 import com.example.financyq.data.repo.ExportPdfRepository
+import com.example.financyq.data.repo.PostImageRepository
 //import com.example.financyq.data.repo.ExportPdfRepository
 import com.example.financyq.data.repo.TotalExpenditureRepository
 import com.example.financyq.data.repo.TotalIncomeRepository
@@ -116,6 +117,13 @@ object Injection {
         val tokenFlow = userPreferences.tokenFlow
         val apiService = ApiConfig.getApiService(tokenFlow)
         return UsernameRepository.getInstance(apiService)
+    }
+
+    fun providePostImageRepository(context: Context): PostImageRepository {
+        val userPreferences = UserPreferences.getInstance(context)
+        val tokenFlow = userPreferences.tokenFlow
+        val apiService = ApiConfig.getApiService(tokenFlow)
+        return PostImageRepository.getInstance(apiService)
     }
 
 
