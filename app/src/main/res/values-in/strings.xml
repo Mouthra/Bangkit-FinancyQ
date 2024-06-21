@@ -135,10 +135,10 @@
     <string name="confirm">Konfirmasi</string>
     <string name="are_you_sure_want_to_delete_it">Apakah Anda yakin ingin menghapusnya?</string>
     <string name="are_you_sure_about_this_change">Apakah Anda yakin dengan perubahan ini?</string>
-    
-    <string-array name="welcome_texts">
-        <item>Welcome to FinancyQ!</item>
-        <item>Empower yourself with our intuitive tools and educational resources designed to enhance your financial literacy. Transform your financial habits for a brighter future.</item>
-        <item>Start your journey with FinancyQ today!</item>
-    </string-array>
+    <string name="results">Hasil</string>
+    <string name="receipt">Cek struk data</string>
+    <string name="empty_image_warning">Mohon pilih gambar dulu</string>
+    <string name="foto_text">Foto</string>
+    <string name="delete">Hapus</string>
+    <string name="cancel">Batal</string>
 </resources>
